@@ -1,9 +1,10 @@
 angular
   .module('venueApp', [
     'ui.router',
-    'ngResource'
+    'ngResource',
+    'angular-jwt'
   ]);
-  // 
+  //
   // 'angular-jwt',
   // 'satellizer',
   // 'rzModule',

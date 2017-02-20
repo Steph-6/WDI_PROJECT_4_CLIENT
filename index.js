@@ -1,5 +1,5 @@
 const express    = require('express');
-const port       = process.env.PORT || 3000;
+const port       = process.env.PORT || 4000;
 const secret     = process.env.SECRET || 'gosh this is so secret... shhh...';
 const app        = express();
 const dest       = `${__dirname}/public`;
