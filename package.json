@@ -51,7 +51,9 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "forever": "^0.15.3"
+    "forever": "^0.15.3",
+    "cors": "^2.8.0",
+    "express-jwt": "^5.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
