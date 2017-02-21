@@ -33,18 +33,31 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
       url: '/users/:id',
       templateUrl: '/js/views/users/show.html',
       controller: 'UsersShowCtrl',
-      controllerAs: 'usersShow',
-      resolve: {
-        UserData: function(User, $stateParams) {
-          return User.get($stateParams).$promise;
-        }
-      }
+      controllerAs: 'usersShow'
+    })
+    .state('profile', {
+      url: '/users/profile/:id',
+      templateUrl: '/js/views/users/profile.html',
+      controller: 'UsersProfileCtrl',
+      controllerAs: 'usersProfile'
+    })
+    .state('new', {
+      url: '/users/profile/:id/new',
+      templateUrl: '/js/views/events/new.html',
+      controller: 'EventsNewCtrl',
+      controllerAs: 'eventsNew'
     })
     .state('edit', {
       url: '/users/:id/edit',
       templateUrl: '/js/views/users/edit.html',
       controller: 'UsersEditCtrl',
       controllerAs: 'usersEdit'
+    })
+    .state('requestsIndex', {
+      url: '/user/:id/requests',
+      templateUrl: '/js/views/requests/index.html',
+      controller: 'ReqIndexCtrl',
+      controllerAs: 'reqIndex'
     });
   $urlRouterProvider.otherwise('/');
 }

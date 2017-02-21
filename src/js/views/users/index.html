@@ -1,4 +1,7 @@
 <h1>Index</h1>
+<li>
+  <a ui-sref="profile({id: users.id})" ng-show="main.hasUser">Welcome {{ main.user.name }}</a>
+</li>
 
 <div ng-if="usersIndex.user === 'yes'">
   <h4>Bands:</h4>

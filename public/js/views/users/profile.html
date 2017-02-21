@@ -1,0 +1,16 @@
+<h1>My Profile</h1>
+<div>My name is {{ usersProfile.user.name }}</div>
+
+<div ng-if="usersProfile.user.is_bar === 'no'">
+  I am a band
+  <button type="button" ui-sref="requestsIndex({id: users.id})">See My Requests</button>
+</div>
+
+<div ng-if="usersProfile.user.is_bar === 'yes'">
+  I am a bar
+  <button type="button" ui-sref="new">Add a Time Slot</button>
+</div>
+
+
+<button type="button" ui-sref="edit">Edit My Account</button>
+<button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>

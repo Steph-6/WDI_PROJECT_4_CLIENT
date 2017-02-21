@@ -1,0 +1,26 @@
+<h1>Add a Time</h1>
+
+<form ng-submit="eventsNew.Create()">
+  <div class=" ">
+    <input class=" " type=" " name="Date" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
+  </div>
+  <!-- <div class=" ">
+    <input class=" " type=" " name="email" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
+  </div>
+  <div class=" ">
+    <input class=" " type=" " name="email" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
+  </div>
+  <div class=" ">
+    <input class=" " type=" " name="email" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
+  </div> -->
+  <input class=" " type="submit" value="Submit">
+</form>
+
+<!-- t.integer  "user_id"
+t.datetime "date"
+t.integer  "slots_on_offer"
+t.integer  "slots_taken"
+t.boolean  "is_active?"
+t.datetime "created_at",     null: false
+t.datetime "updated_at",     null: false
+t.index ["user_id"], name: "index_events_on_user_id", using: :btree -->
