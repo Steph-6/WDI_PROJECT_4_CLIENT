@@ -2,8 +2,8 @@ angular
   .module('venueApp')
   .service('CurrentUserService', CurrentUserService);
 
-CurrentUserService.$inject = ['TokenService', '$rootScope', 'User'];
-function CurrentUserService(TokenService, $rootScope, User) {
+CurrentUserService.$inject = ['TokenService', '$rootScope', 'User', '$state'];
+function CurrentUserService(TokenService, $rootScope, User, $state) {
   const self = this;
 
   self.getUser = () => {
@@ -23,5 +23,6 @@ function CurrentUserService(TokenService, $rootScope, User) {
     self.currentUser = null;
     TokenService.removeToken();
     $rootScope.$broadcast('loggedOut');
+    $state.go('login');
   };
 }

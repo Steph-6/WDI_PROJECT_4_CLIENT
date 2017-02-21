@@ -1,11 +1,11 @@
 <h1>Index</h1>
 
 <div ng-if="usersIndex.user === 'yes'">
-  <div ng-repeat="users in usersIndex.users | filter: { is_bar: 'no'}" >
-    <h4>Bands:</h4>
+  <h4>Bands:</h4>
+    <div ng-repeat="users in usersIndex.users | filter: { is_bar: 'no'}">
     <ul>
       <li>
-        <a ui-sref="show({id: users._id})">{{ users.artist_id }}</a>
+        <a ui-sref="show({id: users.id})">{{ users.artist_id }}</a>
       </li>
       <li>
         <a>{{ users.band_telephone }}</a>
@@ -19,7 +19,7 @@
   <div ng-repeat="users in usersIndex.users | filter: { is_bar: 'yes'}" >
     <ul>
       <li>
-        <a ui-sref="show({id: users._id})">{{ users.name }}</a>
+        <a ui-sref="show({id: users.id})">{{ users.name }}</a>
       </li>
       <li>
         <a>{{ users.bar_location }}</a>

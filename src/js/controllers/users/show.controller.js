@@ -14,15 +14,8 @@ function UsersShowCtrl(CurrentUserService, User, $stateParams, $state) {
     .delete($stateParams)
     .$promise
     .then(() => {
-      console.log('deleted');
-      $state.go('usersIndex');
+      console.log(`deleted ${vm.user}`);
+      $state.go('users');
     });
   };
 }
-
-
-// resolve: {
-//   UserData: function(User, $stateParams) {
-//     return User.get($stateParams).$promise;
-//   }
-// }

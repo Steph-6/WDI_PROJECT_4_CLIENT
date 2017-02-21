@@ -33,7 +33,12 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
       url: '/users/:id',
       templateUrl: '/js/views/users/show.html',
       controller: 'UsersShowCtrl',
-      controllerAs: 'usersShow'
+      controllerAs: 'usersShow',
+      resolve: {
+        UserData: function(User, $stateParams) {
+          return User.get($stateParams).$promise;
+        }
+      }
     })
     .state('edit', {
       url: '/users/:id/edit',
