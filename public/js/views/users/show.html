@@ -1,1 +1,12 @@
 <h1>Show</h1>
+{{ usersShow.user.name }}
+{{ usersShow.user.bar_location }}
+{{ usersShow.user.bar_telephone }}
+{{ usersShow.user.band_telephone }}
+{{ usersShow.user.bar_image }}
+{{ usersShow.user.bar_description }}
+{{ usersShow.user.artist_id }}
+{{ usersShow.user.is_bar }}
+{{ usersShow.user.bar_size }}
+<button type="button">Edit</button>
+<button type="button" ng-click="usersShow.delete({id: users._id})">Delete Account</button>

@@ -36,7 +36,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
       controllerAs: 'usersShow'
     })
     .state('edit', {
-      url: '/users/edit',
+      url: '/users/:id/edit',
       templateUrl: '/js/views/users/edit.html',
       controller: 'UsersEditCtrl',
       controllerAs: 'usersEdit'
