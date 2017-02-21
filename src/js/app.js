@@ -5,7 +5,6 @@ angular
     'angular-jwt'
   ]);
   //
-  // 'angular-jwt',
   // 'satellizer',
   // 'rzModule',
   // 'typer',

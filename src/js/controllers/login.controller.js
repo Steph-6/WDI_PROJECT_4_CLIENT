@@ -11,6 +11,7 @@ function LoginCtrl(User, CurrentUserService) {
       .login(vm.user)
       .$promise
       .then(() => {
+        console.log('logging in');
         CurrentUserService.getUser();
       }, err => {
         console.log(err);

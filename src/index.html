@@ -3,23 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Project 4</title>
+    <base href="/" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO7wU1fpm1Bc5hkpxeIKaxzdPnEospECo&libraries=places" charset="utf-8"></script>
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
     <!-- endinject -->
   </head>
   <body ng-controller="MainCtrl as main">
-    <header>
-      <p>Welcome {{ main.user }}</p>
+    <nav>
+      <p>Welcome {{ main.user.name }}</p>
       <ul>
-        <li ng-hide="main.user">
-          <a>Login</a>
+        <li>
+          <a ui-sref="login">Login</a>
         </li>
-        <li ng-show="main.user">
+        <li>
+          <a ui-sref="register">Register</a>
+        </li>
+        <li>
+          <a ui-sref="users">Users</a>
+        </li>
+        <li>
           <a ng-click="main.logout()">Logout</a>
         </li>
       </ul>
-    </header>
+    </nav>
     <main ui-view>
     </main>
   </body>

@@ -1,25 +1,44 @@
 <h1>Register</h1>
 <form ng-submit="register.register()">
-  <div class="form-group">
-    <input class="form-control" type="text" name="username" ng-model="register.user.username" placeholder="Username">
+  <div class=" ">
+    <input class=" " type="text" name="name" ng-model="register.user.name" placeholder="Name">
   </div>
-  <div class="form-group">
-    <input class="form-control" type="text" name="firstName" ng-model="register.user.firstName" placeholder="First name">
+  <div class=" ">
+    <input class=" " type="email" name="email" ng-model="register.user.email" placeholder="Email">
   </div>
-  <div class="form-group">
-    <input class="form-control" type="text" name="lastName" ng-model="register.user.lastName" placeholder="Last name">
+  <div class=" ">
+    <input class=" " type="password" name="password" ng-model="register.user.password" placeholder="Password">
   </div>
-  <div class="form-group">
-    <input class="form-control" type="text" name="image" ng-model="register.user.image" placeholder="Image">
+  <div class=" ">
+    <input class=" " type="password" name="password_confirmation" ng-model="register.user.password_confirmation" placeholder="Password confirmation">
   </div>
-  <div class="form-group">
-    <input class="form-control" type="email" name="email" ng-model="register.user.email" placeholder="Email">
+  <div class="">
+    <label for="is_bar_yes">Bar</label>
+    <input type="radio" ng-model="register.user.is_bar" name="is_bar_yes" value="yes">
+    <label for="is_bar_no">Band</label>
+    <input type="radio" ng-model="register.user.is_bar" name="is_bar_no" value="no">
   </div>
-  <div class="form-group">
-    <input class="form-control" type="password" name="password" ng-model="register.user.password" placeholder="Password">
+  <div ng-if="register.user.is_bar === 'yes'" class="">
+  <div class=" ">
+    <input class=" " type="text" ng-model="register.user.bar_size" placeholder="Size of Venue">
   </div>
-  <div class="form-group">
-    <input class="form-control" type="password" name="passwordConfirmation" ng-model="register.user.passwordConfirmation" placeholder="Password confirmation">
+  <div class=" ">
+    <input class=" " type="text" ng-model="register.user.bar_location" placeholder="Venue Location">
   </div>
+  <div class=" ">
+    <input class=" " type="text" ng-model="register.user.bar_image" placeholder="Image">
+  </div>
+  <div class=" ">
+    <input class=" " type="text" ng-model="register.user.bar_telephone" placeholder="Venue Contact Number">
+  </div>
+    </div>
+    <div ng-if="register.user.is_bar === 'no'" class="">
+  <div class=" ">
+    <input class=" " type="text" ng-model="register.user.band_telephone" placeholder="Contact Number">
+  </div>
+  <div class=" ">
+    <input class=" " type="text" ng-model="register.user.artist_id" placeholder="Artist Name (spotify applicable)">
+  </div>
+    </div>
   <input class="btn btn-primary" type="submit" value="Submit" />
 </form>

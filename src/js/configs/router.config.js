@@ -9,16 +9,37 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: '/js/home.html'
+      templateUrl: '/js/views/home.html'
     })
     .state('login', {
       url: '/login',
-      templateUrl: '/js/views/login',
+      templateUrl: '/js/views/login.html',
       controller: 'LoginCtrl',
       controllerAs: 'login'
     })
-
-
-    ;
+    .state('register', {
+      url: '/register',
+      templateUrl: '/js/views/register.html',
+      controller: 'RegisterCtrl',
+      controllerAs: 'register'
+    })
+    .state('users', {
+      url: '/users',
+      templateUrl: '/js/views/users/index.html',
+      controller: 'UsersIndexCtrl',
+      controllerAs: 'usersIndex'
+    })
+    .state('show', {
+      url: '/users/:id',
+      templateUrl: '/js/views/users/show.html',
+      controller: 'UsersShowCtrl',
+      controllerAs: 'usersShow'
+    })
+    .state('edit', {
+      url: '/users/edit',
+      templateUrl: '/js/views/users/edit.html',
+      controller: 'UsersEditCtrl',
+      controllerAs: 'usersEdit'
+    });
   $urlRouterProvider.otherwise('/');
 }
