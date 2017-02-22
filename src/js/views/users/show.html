@@ -1,15 +1,33 @@
 <h1>Show</h1>
 <div>
 {{ usersShow.user.name }}
-{{ usersShow.user.bar_location }}
-{{ usersShow.user.bar_telephone }}
 {{ usersShow.user.band_telephone }}
 <img ng-src="{{ usersShow.user.bar_image }}"/>
-{{ usersShow.user.bar_description }}
 {{ usersShow.user.artist_id }}
 {{ usersShow.user.is_bar }}
-{{ usersShow.user.bar_size }}
 </div>
 <div ng-if="usersShow.user.is_bar === 'no'">
   <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
+</div>
+
+<div ng-if="usersShow.user.is_bar === 'yes'">
+  Location: {{ usersShow.user.bar_location }}
+  Contact Details: {{ usersShow.user.bar_telephone }}
+  Description: {{ usersShow.user.bar_description }}
+  Venue Size: {{ usersShow.user.bar_size }}
+
+  <div ng-repeat="events in usersShow.user.events">
+    <ul ng-if="events.is_expired === 'no'">
+      <li>Date: {{ events.date }}</li>
+      <li ng-if="events.slots_remaining !== 0">Slots available: {{ events.slots_remaining }}</li>
+      <li ng-if="events.slots_remaining === 0">This date has been fully booked</li>
+      <li ng-click="">Request Slot</li>
+    </ul>
+  </div>
+
+  <div ng-repeat="events in usersShow.">
+    Pending requests:
+    <!-- date of the event, artist requesting with link and accpet or reject button  -->
+    
+  </div>
 </div>

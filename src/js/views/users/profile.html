@@ -1,15 +1,62 @@
 <h1>My Profile</h1>
 <div>My name is {{ usersProfile.user.name }}</div>
 
+<!-- .................BANDS'S PROFILE...................... -->
+
 <div ng-if="usersProfile.user.is_bar === 'no'">
-  I am a band
-  <button type="button" ui-sref="requestsIndex({id: usersProfile.user.id})">See My Requests</button>
   <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+  <!-- <button type="button" ui-sref="requestsIndex({id: usersProfile.user.id})">See My Requests</button> -->
+
+  <div>
+    <ul>
+      <li>Pending Requests: {{ usersProfile.user.my_pending_requests.length }}</li>
+      <li>Accepted Requests: {{ usersProfile.user.my_accepted_requests.length }}</li>
+      <li>Rejected Requests: {{ usersProfile.user.my_rejected_requests.length }}</li>
+    </ul>
+  </div>
+
+  <!-- <li>Upcoming Events: {{ events.my_pending_requests.length }}</li>
+  <li>Past Events: {{ events.my_pending_requests.length }}</li> -->
+
+
 </div>
 
+<!-- ..................BAR'S PROFILE....................... -->
+
 <div ng-if="usersProfile.user.is_bar === 'yes'">
-  I am a bar
   <button type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
+
+  <hr>
+
+  <h6>Upcoming Events</h6>
+  <div ng-repeat="events in usersProfile.user.events">
+    <ul ng-if="events.is_expired === 'no'">
+      <li>Date: {{ events.date }}</li>
+      <li>Slots on offer: {{ events.slots_on_offer }}</li>
+      <li>Pending Requests: {{ events.pending_requests.length }}</li>
+      <li>
+        Accepted Requests: {{ events.accepted_requests.length }}
+        <!-- <p ng-if="is_at_capacity === 'yes'"></p> -->
+      </li>
+      <li>Rejected Requests: {{ events.rejected_requests.length }}</li>
+    </ul>
+    <hr>
+  </div>
+
+  <hr>
+
+  <h6>Past Events</h6>
+  <div ng-repeat="events in usersProfile.user.events">
+    <ul ng-if="events.is_expired === 'yes'">
+      <li>Date: {{ events.date }}</li>
+      <li>Slots on offer: {{ events.slots_on_offer }}</li>
+      <li>Pending Requests: {{ events.pending_requests.length }}</li>
+      <li>Accepted Requests: {{ events.accepted_requests.length }}</li>
+      <li>Rejected Requests: {{ events.rejected_requests.length }}</li>
+    </ul>
+    <hr>
+  </div>
 </div>
 
 

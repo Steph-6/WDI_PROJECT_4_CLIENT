@@ -6,6 +6,7 @@ UsersShowCtrl.$inject = ['CurrentUserService', 'User', '$stateParams', '$state']
 function UsersShowCtrl(CurrentUserService, User, $stateParams, $state) {
   const vm = this;
 
+  // vm.currentUser = CurrentUserService.currentUser;
   vm.user = User.get($stateParams);
   console.log(vm.user);
 
@@ -19,8 +20,8 @@ function UsersShowCtrl(CurrentUserService, User, $stateParams, $state) {
     });
   };
 
-  vm.artist
-  "https://api.spotify.com/v1/search?q=Daft+Punk&type=artist"
+  // vm.artist
+  // "https://api.spotify.com/v1/search?q=Daft+Punk&type=artist"
 
   // const googleMap = new google.maps.Map;
 
