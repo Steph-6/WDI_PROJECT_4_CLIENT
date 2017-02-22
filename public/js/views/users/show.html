@@ -4,9 +4,12 @@
 {{ usersShow.user.bar_location }}
 {{ usersShow.user.bar_telephone }}
 {{ usersShow.user.band_telephone }}
-{{ usersShow.user.bar_image }}
+<img ng-src="{{ usersShow.user.bar_image }}"/>
 {{ usersShow.user.bar_description }}
 {{ usersShow.user.artist_id }}
 {{ usersShow.user.is_bar }}
 {{ usersShow.user.bar_size }}
+</div>
+<div ng-if="usersShow.user.is_bar === 'no'">
+  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 </div>

@@ -8,5 +8,4 @@ function UsersIndexCtrl(User, CurrentUserService){
 
   vm.user = CurrentUserService.currentUser;
   vm.users = User.query();
-
 }

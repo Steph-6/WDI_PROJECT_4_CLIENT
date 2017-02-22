@@ -1,47 +1,31 @@
 <h1>Edit</h1>
 
-<form ng-submit="edit.register()">
+<form ng-submit="edit.update()">
   <div class=" ">
-    <input class=" " type="text" name="name" ng-model="register.user.name" placeholder="Name">
-  </div>
-  <div class=" ">
-    <input class=" " type="email" name="email" ng-model="register.user.email" placeholder="Email">
-  </div>
-  <div class=" ">
-    <input class=" " type="password" name="password" ng-model="register.user.password" placeholder="Password">
-  </div>
-  <div class=" ">
-    <input class=" " type="password" name="password_confirmation" ng-model="register.user.password_confirmation" placeholder="Password confirmation">
+    <input class=" " type="text" ng-model="usersEdit.user.name" value="{{ usersEdit.user.name }}">
   </div>
 
-  <div class="">
-    <label for="is_bar_yes">Bar</label>
-    <input type="radio" ng-model="register.user.is_bar" name="is_bar_yes" value="yes">
-    <label for="is_bar_no">Band</label>
-    <input type="radio" ng-model="register.user.is_bar" name="is_bar_no" value="no">
-  </div>
-
-  <div ng-if="register.user.is_bar === 'yes'" class="">
+  <div ng-if="usersEdit.user.is_bar === 'yes'" class="">
   <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_size" placeholder="Size of Venue">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_size" placeholder="Size of Venue">
   </div>
   <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_location" placeholder="Venue Location">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_location" placeholder="Venue Location">
   </div>
   <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_image" placeholder="Image">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_image" placeholder="Image">
   </div>
   <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_telephone" placeholder="Venue Contact Number">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_telephone" placeholder="Venue Contact Number">
   </div>
     </div>
 
-  <div ng-if="register.user.is_bar === 'no'" class="">
+  <div ng-if="usersEdit.user.is_bar === 'no'" class="">
     <div class=" ">
-      <input class=" " type="text" ng-model="register.user.band_telephone" placeholder="Contact Number">
+      <input class=" " type="text" ng-model="usersEdit.user.band_telephone" placeholder="Contact Number">
     </div>
     <div class=" ">
-      <input class=" " type="text" ng-model="register.user.artist_id" placeholder="Artist Name (spotify applicable)">
+      <input class=" " type="text" ng-model="usersEdit.user.artist_id" placeholder="Artist Name (spotify applicable)">
     </div>
     </div>
     <input class=" " type="submit" value="Submit" />
