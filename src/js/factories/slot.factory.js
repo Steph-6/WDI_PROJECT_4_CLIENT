@@ -4,6 +4,6 @@ angular
 
 eventFactory.$inject = ['$resource', 'API'];
 function eventFactory($resource, API){
-  return $resource(`${API}/users/:id`, { id: '@_id'},
+  return $resource(`${API}/events/:id`, { id: '@_id'},
     { 'new': { method: 'POST', url: `${API}/events`}});
 }

@@ -11,7 +11,7 @@ function EventsNewCtrl(Event, CurrentUserService, $state) {
   vm.create = function eventsCreate(){
     console.log('creating');
     Event
-      .new({ event: { date: vm.date, duration: vm.duration }})
+      .new({ slot: { date: vm.date, duration: vm.duration }})
       .$promise
       .then(() => {
         $state.go('profile');
