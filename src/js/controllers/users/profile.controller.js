@@ -7,7 +7,6 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state)
   const vm = this;
 
   vm.user = CurrentUserService.currentUser;
-  
 
   console.log(vm.user);
 

@@ -5,8 +5,6 @@ angular
 EventsNewCtrl.$inject = ['Event', 'CurrentUserService', '$state', '$stateParams'];
 function EventsNewCtrl(Event, CurrentUserService, $state, $stateParams) {
   const vm = this;
-  // const today = new Date();
-  // vm.today = today.toDateString();
 
   vm.create = function eventsCreate(){
     Event
@@ -18,7 +16,7 @@ function EventsNewCtrl(Event, CurrentUserService, $state, $stateParams) {
   };
 }
 
-// 
+//
 // vm.acceptRequest = function(id){
 //   Request
 //   .accept({id: id})

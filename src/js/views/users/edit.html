@@ -1,31 +1,31 @@
 <h1>Edit</h1>
 
-<form ng-submit="edit.update()">
+<form ng-submit="usersEdit.update()">
   <div class=" ">
     <input class=" " type="text" ng-model="usersEdit.user.name" value="{{ usersEdit.user.name }}">
   </div>
 
   <div ng-if="usersEdit.user.is_bar === 'yes'" class="">
   <div class=" ">
-    <input class=" " type="text" ng-model="usersEdit.user.bar_size" placeholder="Size of Venue">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_size" value="{{ usersEdit.user.bar_size }}">
   </div>
   <div class=" ">
-    <input class=" " type="text" ng-model="usersEdit.user.bar_location" placeholder="Venue Location">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_location" value="{{ usersEdit.user.bar_location }}">
   </div>
   <div class=" ">
-    <input class=" " type="text" ng-model="usersEdit.user.bar_image" placeholder="Image">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_image" value="{{ usersEdit.user.bar_image }}">
   </div>
   <div class=" ">
-    <input class=" " type="text" ng-model="usersEdit.user.bar_telephone" placeholder="Venue Contact Number">
+    <input class=" " type="text" ng-model="usersEdit.user.bar_telephone" value="{{ usersEdit.user.bar_telephone }}">
   </div>
-    </div>
+  </div>
 
   <div ng-if="usersEdit.user.is_bar === 'no'" class="">
     <div class=" ">
-      <input class=" " type="text" ng-model="usersEdit.user.band_telephone" placeholder="Contact Number">
+      <input class=" " type="text" ng-model="usersEdit.user.band_telephone" value="{{ usersEdit.user.band_telephone }}">
     </div>
     <div class=" ">
-      <input class=" " type="text" ng-model="usersEdit.user.artist_id" placeholder="Artist Name (spotify applicable)">
+      <input class=" " type="text" ng-model="usersEdit.user.artist_id" value="{{ usersEdit.user.artist_id }}">
     </div>
     </div>
     <input class=" " type="submit" value="Submit" />
