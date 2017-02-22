@@ -3,14 +3,14 @@
 
 <div ng-if="usersProfile.user.is_bar === 'no'">
   I am a band
-  <button type="button" ui-sref="requestsIndex({id: users.id})">See My Requests</button>
+  <button type="button" ui-sref="requestsIndex({id: usersProfile.user.id})">See My Requests</button>
 </div>
 
 <div ng-if="usersProfile.user.is_bar === 'yes'">
   I am a bar
-  <button type="button" ui-sref="new">Add a Time Slot</button>
+  <button type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
 </div>
 
 
-<button type="button" ui-sref="edit">Edit My Account</button>
+<button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button>
 <button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
