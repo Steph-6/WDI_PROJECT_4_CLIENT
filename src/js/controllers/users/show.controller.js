@@ -18,4 +18,10 @@ function UsersShowCtrl(CurrentUserService, User, $stateParams, $state) {
       $state.go('users');
     });
   };
+
+  vm.artist
+  "https://api.spotify.com/v1/search?q=Daft+Punk&type=artist"
+
+  // const googleMap = new google.maps.Map;
+
 }

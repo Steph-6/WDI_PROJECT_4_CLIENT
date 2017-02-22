@@ -1,19 +1,22 @@
 <h1>Add a Time</h1>
 
 <form ng-submit="eventsNew.create()">
-  <div class=" ">
-    <input class=" " type=" " name="Date" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
-    <input class=" " type=" " name="Number of slots">
-            <!-- add field for duration of slot -->
-  <!-- then on each slot show duration of each -->
-    <input class=" " type=" " name="Description">
-  </div>
-  <input class=" " type="submit" value="Submit">
+  <label for="Date">Date</label>
+  <input  type="datetime-local" name="Date" ng-model="eventsNew.event.date">
+  <label for="Number of slots">Number of Slots</label>
+  <input  type="number" min="1" max="6" ng-model="eventsNew.event.slots_on_offer" name="Number of slots">
+  <label for="Description">Description</label>
+  <textarea name="Description" ng-model="eventsNew.event.description" rows="4" cols="80"></textarea>
+  <br>
+  <input type="submit" value="Submit">
 </form>
 
 <!-- is active status -->
 
-
+<!-- <div ng-repeat="request in eventsShow.event.pending_requests" class="">
+  <button type="button" ng-click"eventsShow.acceptRequest(request.id)" name="button"></button>
+  <button type="button" ng-click"eventsShow.rejectRequest(request.id)" name="button"></button>
+</div> -->
 
 
 <!-- t.integer  "user_id"
