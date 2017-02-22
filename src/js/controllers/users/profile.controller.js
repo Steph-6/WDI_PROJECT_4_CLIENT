@@ -13,7 +13,6 @@ function UsersProfileCtrl(CurrentUserService, User, $stateParams, $state) {
       .delete($stateParams)
       .$promise
       .then(() => {
-        console.log(`deleted ${vm.user}`);
         $state.go('login');
       });
   };
