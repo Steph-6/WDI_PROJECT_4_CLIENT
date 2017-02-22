@@ -6,10 +6,7 @@ UsersIndexCtrl.$inject = ['User', 'CurrentUserService'];
 function UsersIndexCtrl(User, CurrentUserService){
   const vm = this;
 
-  vm.user = CurrentUserService.currentUser.is_bar;
+  vm.user = CurrentUserService.currentUser;
   vm.users = User.query();
 
-  console.log(vm.users);
-
-  // if (vm.users.is_bar)
 }

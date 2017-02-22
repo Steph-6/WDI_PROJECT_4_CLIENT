@@ -1,9 +1,16 @@
 <h1>Add a Time</h1>
 
-<form ng-submit="eventsNew.Create()">
+<form ng-submit="eventsNew.create()">
   <div class=" ">
     <input class=" " type=" " name="Date" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
+    <input class=" " type=" " name="Duration" ng-model="eventsNew.events.duration" placeholder="Duration of Time Slot (hrs)">
   </div>
+  <input class=" " type="submit" value="Submit">
+</form>
+
+
+
+
   <!-- <div class=" ">
     <input class=" " type=" " name="email" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
   </div>
@@ -13,8 +20,7 @@
   <div class=" ">
     <input class=" " type=" " name="email" ng-model="eventsNew.events.date" placeholder="Date (dd/mm/yy)">
   </div> -->
-  <input class=" " type="submit" value="Submit">
-</form>
+
 
 <!-- t.integer  "user_id"
 t.datetime "date"

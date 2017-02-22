@@ -42,7 +42,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
       controllerAs: 'usersProfile'
     })
     .state('new', {
-      url: '/users/profile/:id/new',
+      url: '/users/:id/event/new',
       templateUrl: '/js/views/events/new.html',
       controller: 'EventsNewCtrl',
       controllerAs: 'eventsNew'

@@ -1,0 +1,38 @@
+TO ADD
+logic:
+user has many requests
+  user has maximum of three pending requests
+    Artist_id's counter
+notification counter next to bar profiles name
+
+Views
+Bar Profile
+  "you have {{}} pending ~invitations"
+  google maps into ngif bar showing location
+  image tag on bar image url
+    have default image of a bar if none were added
+      add asterisk next to mandatory fields
+
+
+App Profile
+  put artist name to lowercase and split ' ' then join + and put into spotify url
+    Get that returned object thing
+  embed spotify widget playing latest album
+  take genres and display in artists profile
+  take image and display in artists profile
+  -Don't have a spotify + button to add youtube link / sound cloud link
+  You currently have x pending and y accepted upcoming events - see the details here...
+
+discover page
+Sort by arrow on index of bars and artists
+
+Design:
+put added time slots from bars into rows with would you like to request this slot
+
+Additional API:
+yelp autofill for bar
+
+Additional:
+Ratings
+Comment
+Other user model to scroll upcoming accepted events

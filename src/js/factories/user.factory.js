@@ -8,6 +8,7 @@ function userFactory($resource, API){
     { id: '@_id'},
     {
       'register': { method: 'POST', url: `${API}/register` },
-      'login': { method: 'POST', url: `${API}/login` }
+      'login': { method: 'POST', url: `${API}/login` },
+      'new': { method: 'POST', url: `${API}/events`}
     });
 }
