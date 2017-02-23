@@ -1,5 +1,4 @@
-<h1>My Profile</h1>
-<div>My name is {{ usersProfile.user.name }}</div>
+<h1>{{ usersProfile.user.name }}'s Profile</h1>
 
 <!-- .................BANDS'S PROFILE...................... -->
 
@@ -41,21 +40,23 @@
   <hr>
 
 
-  <h6>Upcoming Events</h6>
+  <h3>Upcoming Events</h3>
   <div ng-repeat="event in usersProfile.events | orderBy: '-date_string':true">
     <ul ng-if="event.is_expired === 'no'">
-      <li>Date:            {{ event.date_string }}</li>
-      <li>Description:     {{ event.description }}</li>
-      <li>Slots Remaining: {{ event.slots_remaining }}</li>
+      <!-- {{ event.date }} -->
       <li>
-        You have accepted {{ event.accepted_requests.length }} artist's on the night {{ event.date_string }}</br>
-        From: {{ event.band_name }} are playing
+        {{ event.date_string }} you have {{ event.accepted_requests.length }} artist's playing.
+        <li>Description:     {{ event.description }}</li>
+        <li>Slots Remaining: {{ event.slots_remaining }}</li>
+      </li>
+      <li>
+        **********Accepted Requests: <!-- {{ event.name }} -->
       </li>
       <li>
         Rejected Requests: {{ event.rejected_requests.length }} </br>
         {{  }}
       </li>
-      <li>Pending Requests:  {{ event.number_of_pending_requests }}</li>
+      <li>Pending Requests from:  </li>
       <ul ng-repeat="pending in event.pending_requests">
         <li>
           By Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
@@ -66,22 +67,20 @@
       <hr>
     </ul>
   </div>
-
-  <hr>
+  <!-- {{ event.number_of_pending_requests }} -->
 
   <div ng-repeat="event in usersProfile.user.events">
-    <h6>Past Events</h6>
     <ul ng-if="event.is_expired === 'yes'">
+      <h6>Past Events</h6>
       <li>Date:              {{ event.date }}</li>
       <li>Slots remaining:   {{ event.slots_remaining }}</li>
       <li>Pending Requests:  {{ event.pending_requests.length }}</li>
       <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
       <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
     </ul>
-    <hr>
   </div>
-
 </div>
 
 <!-- <button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button> -->
 <button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
+<hr>

@@ -1,13 +1,10 @@
-<h1>Index</h1>
-<li>
-  <a ui-sref="profile({id: main.user.id})" ng-show="main.hasUser">Welcome {{ main.user.name }}</a>
-</li>
+
 
 <!-- ..................BAR'S PROFILE....................... -->
 
 
 <div ng-if="main.user.is_bar === 'yes'">
-  <h4>Bands:</h4>
+  <h4>Discover Artists</h4>
     <div ng-repeat="user in usersIndex.users | filter: { is_bar: 'no'}">
     <ul>
       <li>
@@ -23,7 +20,7 @@
 <!-- ..................BAND'S PROFILE....................... -->
 
 <div ng-if="main.user.is_bar === 'no'">
-  <h4>Venues</h4>
+  <h4>Discover Venues</h4>
   <div ng-repeat="user in usersIndex.users | filter: { is_bar: 'yes'}" >
     <ul>
       <li>

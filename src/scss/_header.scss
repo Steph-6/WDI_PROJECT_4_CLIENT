@@ -1,12 +1,18 @@
-// .nav {
-//   border: solid 2px $border-color;
-// }
-// 
-// li {
-//   list-style-type: none;
-//
-//   a {
-//     text-decoration: none;
-//     color: $font-color;
-//   }
-// }
+.nav {
+  border: solid #49443A 2px;
+  padding: 30px;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #49443A;
+}
+
+a:hover {
+  text-decoration: line-through;
+  color: #49443A;
+}

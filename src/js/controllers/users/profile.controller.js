@@ -17,6 +17,9 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
     vm.events = data;
   });
 
+  vm.requests = Request.query();
+
+  console.log(vm.requests, 'requests');
   console.log(vm.user, 'user');
   console.log(vm.events, 'event');
 
