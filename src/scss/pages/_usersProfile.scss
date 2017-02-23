@@ -1,0 +1,17 @@
+.right-side {
+  border-left: solid 2px #cccccc;
+}
+
+iframe {
+  margin-left: 40px;
+  border-bottom: 40px solid $background-color;
+}
+
+.spotify-image {
+  float: left;
+  border-right: 40px solid $background-color;
+}
+
+.delete {
+  margin-top: 20px;
+}

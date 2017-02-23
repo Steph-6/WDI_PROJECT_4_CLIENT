@@ -39,6 +39,7 @@
   Contact Details: {{ usersShow.user.bar_telephone }}
   Description: {{ usersShow.user.bar_description }}
   Venue Size: {{ usersShow.user.bar_size }}
+  Web Link: <a href="{{ usersShow.user.website }}">{{ usersShow.user.website }}</a>
 
   <div ng-repeat="event in usersShow.events">
     <ul ng-if="event.is_expired === 'no'">

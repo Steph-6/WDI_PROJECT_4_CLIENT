@@ -1,31 +1,40 @@
+
 .nav {
-  border: solid #141414 2px;
   padding: 30px;
   background-color: #141414;
   color: white;
+  height: 100px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-li {
+.nav-options {
+  border-right: white solid 3px
+}
+
+#nav-user {
+  margin-left: 21px;
+}
+
+.nav li {
   list-style-type: none;
 }
 
-a {
+.nav a {
   text-decoration: none;
   color: white;
   text-transform: uppercase;
   overflow: hidden;
   margin: 0 10px 0;
-  border-bottom-width: 0;
-  border-bottom-style: solid;
-  border-bottom-color: white;
-  -webkit-transition: color 500ms ease-out,border-bottom-width 300ms ease;
-  -moz-transition: color 500ms ease-out,border-bottom-width 300ms ease;
-  -o-transition: color 500ms ease-out,border-bottom-width 300ms ease;
-  transition: color 500ms ease-out,border-bottom-width 300ms ease;
+  // border-bottom-width: 0;
+  // border-bottom-style: solid;
+  // border-bottom-color: white;
+  // -webkit-transition: color 500ms ease-out,border-bottom-width 300ms ease;
+  // -moz-transition: color 500ms ease-out,border-bottom-width 300ms ease;
+  // -o-transition: color 500ms ease-out,border-bottom-width 300ms ease;
+  // transition: color 500ms ease-out,border-bottom-width 300ms ease;
 }
 
-a:hover {
+.nav a:hover {
   text-decoration: line-through;
   color: white;
 }

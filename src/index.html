@@ -11,17 +11,17 @@
     <!-- endinject -->
   </head>
   <body class="body" ng-controller="MainCtrl as main">
-    <nav class="u-full-width">
-      <div class="nav">
+    <div class="nav u-full-width">
+      <div class="nav-options columns four">
         <a ui-sref="login" ng-hide="main.hasUser">Login</a>
         <a ui-sref="register" ng-hide="main.hasUser">Register</a>
-        <a ui-sref="users" ng-show="main.hasUser">Users</a>
+        <a id="nav-user" ui-sref="users" ng-show="main.hasUser">Users</a>
         <a ng-click="main.logout()" ng-show="main.hasUser">Logout</a>
         <div ng-show="main.hasUser">
           WELCOME <a ui-sref="profile({id: main.user.id})" ng-show="main.hasUser">{{ main.user.name }}</a>
         </div>
       </div>
-    </nav>
+    </div>
     <main class="main-page" ui-view>
     </main>
   </body>

@@ -1,36 +1,36 @@
 <h1>{{ usersProfile.user.name }}'s Profile</h1>
+<hr>
 
 <!-- .................BANDS'S PROFILE...................... -->
 
-
 <div ng-if="usersProfile.user.is_bar === 'no'">
-  <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-  <img src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
-  <label>Genre</label>
-  <div>
-    {{ usersProfile.spotifyInfo.genres[0]}}
-  </div>
-
-  <!-- <button type="button" ui-sref="requestsIndex({id: usersProfile.user.id})">See My Requests</button> -->
-
-  <!-- the who: 67ea9eGLXYMsO2eYQRui3w -->
-
-  <!-- {{ usersProfile.spotifyInfo }} -->
-
-  <div>
+  <div class="columns seven">
+    <img class="spotify-image" src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
+    <label>Genre:</label>
     <ul>
-      <li>Pending Requests:  {{ usersProfile.user.my_pending_requests.length }}</li>
-      <li>Accepted Requests: {{ usersProfile.user.my_accepted_requests.length }}</li>
-      <li>Rejected Requests: {{ usersProfile.user.my_rejected_requests.length }}</li>
+      <li>{{ usersProfile.spotifyInfo.genres[0]}}</li>
+      <li>{{ usersProfile.spotifyInfo.genres[1]}}</li>
     </ul>
+    <hr>
+    <div>
+      <ul>
+        <li>Pending Requests:  {{usersProfile.user.my_pending_requests.length }}</li>
+        <li>Accepted Requests: {{usersProfile.user.my_accepted_requests.length }}</li>
+        <li>Rejected Requests: {{usersProfile.user.my_rejected_requests.length }}</li>
+      </ul>
+    </div>
+    <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
   </div>
 
-  <!-- <li>Upcoming Events: {{ usersProfile. events.number_of_pending_requests }}</li>
-  <li ng-repeat="event in usersProfile.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
-  <li>Past Events: {{ events.my_pending_requests.length }}</li> -->
+      <!-- <li>Upcoming Events: {{ usersProfile. events.number_of_pending_requests }}</li>
+      <li ng-repeat="event in usersProfile.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
+      <li>Past Events: {{ events.my_pending_requests.length }}</li> -->
 
+  <div class="columns four right-side">
+    <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
 </div>
+
 
 <!-- ..................BAR'S PROFILE....................... -->
 
@@ -82,5 +82,3 @@
 </div>
 
 <!-- <button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button> -->
-<button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
-<hr>
