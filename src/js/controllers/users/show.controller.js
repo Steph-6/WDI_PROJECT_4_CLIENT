@@ -2,36 +2,68 @@ angular
 .module('venueApp')
 .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['CurrentUserService', 'User', 'Request', '$stateParams', '$state'];
-function UsersShowCtrl(CurrentUserService, User, Request, $stateParams, $state) {
+UsersShowCtrl.$inject = ['CurrentUserService', 'Event', 'User', 'Request', '$stateParams', '$state', '$http'];
+function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $state, $http) {
   const vm = this;
 
-  vm.user = User.get($stateParams);
-  console.log(vm.user);
+  User
+  .get($stateParams)
+  .$promise
+  .then((data) => {
+    vm.user = data;
+    vm.getSpotify();
+  });
+  Event.query().$promise.then((data)=>{
+    vm.events = data;
+    console.log(vm.events);
+  });
 
   vm.delete = function usersDelete() {
     User
       .delete($stateParams)
       .$promise
       .then(() => {
-        console.log(`deleted ${vm.user}`);
         $state.go('users');
       });
   };
 
-  vm.sendRequest = function sendRequest() {
+  // let artist = CurrentUserService.currentUser.name;
+  // artist = artist.split(' ').join('+');
+
+  vm.getSpotify = function getSpotify(){
+    const artist = vm.user.name.split(' ').join('+');
+    $http({
+      method: 'GET',
+      url: `https://api.spotify.com/v1/search?q=${artist}&type=artist`
+    }).then((res) => {
+      vm.artist = res.data.artists.items[0];
+    }, (err) => {
+      console.error(err);
+    });
+  };
+
+  vm.sendRequest = function sendRequest(eventId) {
+    const request = {
+      event_id: eventId,
+      user_id: CurrentUserService.currentUser.id,
+      band_name: CurrentUserService.currentUser.name,
+      status: 'pending'
+    }
     Request
-      .pending($stateParams)
+      .save(request)
       .$promise
       .then((data) => {
-        console.log(data);
-        console.log(`vm.user.events.pending_requests`);
+        CurrentUserService.getUser();
+        Event.query().$promise.then((data)=>{
+          vm.events = data;
+        });
       });
   };
 
-  vm.acceptRequest = function acceptRequest() {
+  vm.acceptRequest = function acceptRequest(request) {
+    request.status = 'accepted';
     Request
-      .accept($stateParams)
+      .update({id: request.id}, request)
       .$promise
       .then((data) => {
         console.log(data);
@@ -39,12 +71,22 @@ function UsersShowCtrl(CurrentUserService, User, Request, $stateParams, $state) 
   };
 
   vm.rejectRequest = function rejectRequest() {
-    Request 
+    Request
       .reject($stateParams)
       .$promise
       .then((data) => {
         console.log(data);
       });
+  };
+
+  vm.checkRequests = function checkRequests(eventId) {
+    let check = true;
+    ['my_accepted_requests', 'my_pending_requests', 'my_rejected_requests'].forEach((requests) => {
+      CurrentUserService.currentUser[requests].forEach((request) => {
+        request.event_id === eventId ? check = false : null;
+      });
+    });
+    return check;
   };
 
   // vm.artist

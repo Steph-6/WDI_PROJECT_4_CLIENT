@@ -8,9 +8,9 @@ function EventsNewCtrl(Event, CurrentUserService, $state, $stateParams) {
 
   vm.create = function eventsCreate(){
     Event
-      .save({event: vm.event})
+      .save(vm.event)
       .$promise
-      .then(() => {
+      .then((data) => {
         $state.go('profile', {id: $stateParams.id});
       });
   };

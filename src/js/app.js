@@ -4,9 +4,3 @@ angular
     'ngResource',
     'angular-jwt'
   ]);
-  //
-  // 'satellizer',
-  // 'rzModule',
-  // 'typer',
-  // 'ngAudio',
-  // 'ngAnimate'

@@ -1,31 +1,35 @@
 <h1>Show</h1>
-<div>
+
+<!-- .................BANDS'S PROFILE...................... -->
+
+<div ng-if="usersShow.user.is_bar === 'no'">
 {{ usersShow.user.name }}
 {{ usersShow.user.band_telephone }}
-<img ng-src="{{ usersShow.user.bar_image }}"/>
-{{ usersShow.user.artist_id }}
-{{ usersShow.user.is_bar }}
-</div>
-<div ng-if="usersShow.user.is_bar === 'no'">
-  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
 </div>
 
+ <!-- <div ng-if="usersShow.user.is_bar === 'no'">
+  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
+</div> -->
+
+<!-- .................BAR'S PROFILE...................... -->
+
 <div ng-if="usersShow.user.is_bar === 'yes'">
+  <img ng-src="{{ usersShow.user.bar_image }}"/>
   Location: {{ usersShow.user.bar_location }}
   Contact Details: {{ usersShow.user.bar_telephone }}
   Description: {{ usersShow.user.bar_description }}
   Venue Size: {{ usersShow.user.bar_size }}
 
-  <div ng-repeat="events in usersShow.user.events">
-    <ul ng-if="events.is_expired === 'no'">
-      <li>Date: {{ events.date }}</li>
-      <li ng-if="events.slots_remaining !== 0">Slots available: {{ events.slots_remaining }}</li>
-      <li ng-if="events.slots_remaining !== 0"><button ng-click="events.num_of_pending_requests + 1">Request Slot</button></li>
-      <li ng-if="events.slots_remaining === 0">This date has been fully booked</li>
+  <div ng-repeat="event in usersShow.events">
+    <ul ng-if="event.is_expired === 'no'">
+      <li>Date: {{ event.date }}</li>
+      <li ng-if="event.slots_remaining !== 0">Slots available: {{ event.slots_remaining }}</li>
+      <li ng-if="event.slots_remaining !== 0"><button ng-if="usersShow.checkRequests(event.id)" ng-click="usersShow.sendRequest(event.id)">Request Slot</button></li>
+      <li ng-if="event.slots_remaining === 0">This date has been fully booked</li>
     </ul>
   </div>
 
-  <div ng-repeat="events in usersShow.">
+  <div >
     Pending requests:
     <!-- date of the event, artist requesting with link and accpet or reject button  -->
 

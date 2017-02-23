@@ -1,34 +1,34 @@
 <h1>Index</h1>
 <li>
-  <a ui-sref="profile({id: usersIndex.user.id})" ng-show="main.hasUser">Welcome {{ main.user.name }}</a>
+  <a ui-sref="profile({id: main.user.id})" ng-show="main.hasUser">Welcome {{ main.user.name }}</a>
 </li>
 
-<div ng-if="usersIndex.user.is_bar === 'yes'">
+<div ng-if="main.user.is_bar === 'yes'">
   <h4>Bands:</h4>
-    <div ng-repeat="users in usersIndex.users | filter: { is_bar: 'no'}">
+    <div ng-repeat="user in usersIndex.users | filter: { is_bar: 'no'}">
     <ul>
       <li>
-        <a ui-sref="show({id: users.id})">{{ users.artist_id }}</a>
+        <a ui-sref="show({id: user.id})">{{ user.artist_id }}</a>
       </li>
       <li>
-        <a>{{ users.band_telephone }}</a>
+        <a>{{ user.band_telephone }}</a>
       </li>
     </ul>
   </div>
 </div>
 
-<div ng-if="usersIndex.user.is_bar === 'no'">
+<div ng-if="main.user.is_bar === 'no'">
   <h4>Venues</h4>
-  <div ng-repeat="users in usersIndex.users | filter: { is_bar: 'yes'}" >
+  <div ng-repeat="user in usersIndex.users | filter: { is_bar: 'yes'}" >
     <ul>
       <li>
-        <a ui-sref="show({id: users.id})">{{ users.name }}</a>
+        <a ui-sref="show({id: user.id})">{{ user.name }}</a>
       </li>
       <li>
-        <a>{{ users.bar_location }}</a>
+        <a>{{ user.bar_location }}</a>
       </li>
       <li>
-        <a>{{ users.bar_size }}</a>
+        <a>{{ user.bar_size }}</a>
       </li>
     </ul>
   </div>

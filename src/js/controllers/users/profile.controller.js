@@ -2,13 +2,15 @@ angular
   .module('venueApp')
   .controller('UsersProfileCtrl', UsersProfileCtrl);
 
-UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state'];
-function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state) {
+UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state', 'Request'];
+function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state, Request) {
   const vm = this;
 
-  vm.user = CurrentUserService.currentUser;
-
-  console.log(vm.user);
+  vm.user     = User.get({id: $stateParams.id})
+  Event.query().$promise.then((data)=>{
+    vm.events = data;
+    console.log(vm.events);
+  });
 
   vm.delete = function usersDelete() {
     User
