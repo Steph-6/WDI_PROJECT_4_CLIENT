@@ -8,3 +8,11 @@
 @import "pages/usersProfile";
 @import "pages/usersEdit";
 @import "pages/eventsNew";
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.main-page {
+  padding: 30px;
+}
