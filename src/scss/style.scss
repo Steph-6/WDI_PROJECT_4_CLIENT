@@ -6,7 +6,7 @@
 @import "pages/login";
 @import "pages/usersIndex";
 @import "pages/usersProfile";
-@import "pages/usersEdit";
+@import "pages/usersShow";
 @import "pages/eventsNew";
 
 body {
@@ -15,4 +15,12 @@ body {
 
 .main-page {
   padding: 30px;
+}
+
+button {
+  border-radius: 0px;
+}
+
+button:hover {
+  text-decoration: line-through;
 }
