@@ -6,6 +6,8 @@ UsersShowCtrl.$inject = ['CurrentUserService', 'Event', 'User', 'Request', '$sta
 function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $state, $http) {
   const vm = this;
 
+  vm.currentUser = CurrentUserService.currentUser;
+
   User
   .get($stateParams)
   .$promise
@@ -71,8 +73,9 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
   };
 
   vm.rejectRequest = function rejectRequest() {
+    request.status = 'rejected';
     Request
-      .reject($stateParams)
+      .update({id: request.id}, request)
       .$promise
       .then((data) => {
         console.log(data);

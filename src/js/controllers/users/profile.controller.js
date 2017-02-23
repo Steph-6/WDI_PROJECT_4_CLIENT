@@ -12,6 +12,8 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
     console.log(vm.events);
   });
 
+  // console.log(vm.user);
+
   vm.delete = function usersDelete() {
     User
       .delete($stateParams)

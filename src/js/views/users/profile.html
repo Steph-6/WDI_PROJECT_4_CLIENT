@@ -17,9 +17,9 @@
     </ul>
   </div>
 
-  <!-- <li>Upcoming Events: {{ events.my_pending_requests.length }}</li>
+  <!-- <li>Upcoming Events: {{ usersProfile. events.number_of_pending_requests }}</li>
+  <li ng-repeat="event in usersProfile.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
   <li>Past Events: {{ events.my_pending_requests.length }}</li> -->
-
 
 </div>
 
@@ -35,31 +35,31 @@
     <ul ng-if="event.is_expired === 'no'">
       <li>Date:              {{ event.date }}</li>
       <li>Description:       {{ event.description }}</li>
-      <li>Slots on offer:    {{ event.slots_on_offer }}</li>
+      <li>Slots Remaining:   {{ event.slots_remaining }}</li>
       <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
       <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
-      <li>Pending Requests:  {{ event.pending_requests.length }}</li>
+      <div ng-repeat="event in usersProfile.events">
+        <li>Pending Requests:  {{ event.number_of_pending_requests }}</li>
+        <ul>
+          <li ng-repeat="pending in event.pending_requests">
+            Pending Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
+            <button type="button">Accept</button>
+            <button type="button">Reject</button>
+          </li>
+        </ul>
+      </div>
+      <hr>
     </ul>
   </div>
-  <div ng-repeat="event in usersProfile.events">
-    <ul>
-      <li ng-repeat="pending in event.pending_requests">Pending Artist:  <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a></li>
-      <button type="button">Accept</button>
-      <button type="button">Reject</button>
-    </ul>
-  </div>
+
   <hr>
 </div>
 
-
-
   <hr>
-
-  <h6>Past Events</h6>
   <div ng-repeat="event in usersProfile.user.events">
     <ul ng-if="event.is_expired === 'yes'">
       <li>Date:              {{ event.date }}</li>
-      <li>Slots on offer:    {{ event.slots_on_offer }}</li>
+      <li>Slots remaining:    {{ event.slots_remaining }}</li>
       <li>Pending Requests:  {{ event.pending_requests.length }}</li>
       <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
       <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
