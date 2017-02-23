@@ -3,27 +3,39 @@
 <!-- .................BANDS'S PROFILE...................... -->
 
 <div ng-if="usersShow.user.is_bar === 'no'">
-{{ usersShow.user.name }}
-{{ usersShow.user.band_telephone }}
+  <label>Artist's Name</label>
+  <p>{{ usersShow.user.name }}</p>
+  <label>Contact Number</label>
+  <p>{{ usersShow.user.band_telephone }}</p>
+</div>
+
+<!-- <div>
+  <label>Past Events</label>
+  <ul>
+    <li>{{ usersShow.user}}</li>
+  </ul>
+
+
+
+
+
+
+{{ UsersShow.getSpotify }} -->
 
 
  <!-- <div ng-if="usersShow.user.is_bar === 'no'">
   <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
 </div> -->
 
-<div>
   <!-- pending requests: -->
   <!-- date of the event, artist requesting with link and accpet or reject button  -->
 
-
-</div>
-</div>
 
 <!-- .................BAR'S PROFILE...................... -->
 
 <div ng-if="usersShow.user.is_bar === 'yes'">
   <img ng-src="{{ usersShow.user.bar_image }}"/>
-  Location: {{ usersShow.user.bar_location }}
+  Address: {{ usersShow.user.bar_location }}
   Contact Details: {{ usersShow.user.bar_telephone }}
   Description: {{ usersShow.user.bar_description }}
   Venue Size: {{ usersShow.user.bar_size }}
@@ -37,9 +49,9 @@
     </ul>
   </div>
 
-  <div >
+  <!-- <div >
     Pending requests:
-    <!-- date of the event, artist requesting with link and accpet or reject button  -->
+    date of the event, artist requesting with link and accpet or reject button
 
-  </div>
+  </div> -->
 </div>

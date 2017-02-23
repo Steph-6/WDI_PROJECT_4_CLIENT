@@ -5,9 +5,19 @@
 
 
 <div ng-if="usersProfile.user.is_bar === 'no'">
-  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+  <img src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
+  <label>Genre</label>
+  <div>
+    {{ usersProfile.spotifyInfo.genres[0]}}
+  </div>
 
   <!-- <button type="button" ui-sref="requestsIndex({id: usersProfile.user.id})">See My Requests</button> -->
+
+  <!-- the who: 67ea9eGLXYMsO2eYQRui3w -->
+
+  <!-- {{ usersProfile.spotifyInfo }} -->
 
   <div>
     <ul>
@@ -26,47 +36,52 @@
 <!-- ..................BAR'S PROFILE....................... -->
 
 <div ng-if="usersProfile.user.is_bar === 'yes'">
+  <hr>
   <button type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
-
   <hr>
 
+
   <h6>Upcoming Events</h6>
-  <div ng-repeat="event in usersProfile.user.events">
+  <div ng-repeat="event in usersProfile.events | orderBy: '-date_string':true">
     <ul ng-if="event.is_expired === 'no'">
-      <li>Date:              {{ event.date }}</li>
-      <li>Description:       {{ event.description }}</li>
-      <li>Slots Remaining:   {{ event.slots_remaining }}</li>
-      <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
-      <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
-      <div ng-repeat="event in usersProfile.events">
-        <li>Pending Requests:  {{ event.number_of_pending_requests }}</li>
-        <ul>
-          <li ng-repeat="pending in event.pending_requests">
-            Pending Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
-            <button type="button">Accept</button>
-            <button type="button">Reject</button>
-          </li>
-        </ul>
-      </div>
+      <li>Date:            {{ event.date_string }}</li>
+      <li>Description:     {{ event.description }}</li>
+      <li>Slots Remaining: {{ event.slots_remaining }}</li>
+      <li>
+        You have accepted {{ event.accepted_requests.length }} artist's on the night {{ event.date_string }}</br>
+        From: {{ event.band_name }} are playing
+      </li>
+      <li>
+        Rejected Requests: {{ event.rejected_requests.length }} </br>
+        {{  }}
+      </li>
+      <li>Pending Requests:  {{ event.number_of_pending_requests }}</li>
+      <ul ng-repeat="pending in event.pending_requests">
+        <li>
+          By Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
+          <button type="button" ng-click="usersProfile.acceptRequest(pending)">Accept</button>
+          <button type="button" ng-click="usersProfile.rejectRequest(pending)">Reject</button>
+        </li>
+      </ul>
       <hr>
     </ul>
   </div>
 
   <hr>
-</div>
 
-  <hr>
   <div ng-repeat="event in usersProfile.user.events">
+    <h6>Past Events</h6>
     <ul ng-if="event.is_expired === 'yes'">
       <li>Date:              {{ event.date }}</li>
-      <li>Slots remaining:    {{ event.slots_remaining }}</li>
+      <li>Slots remaining:   {{ event.slots_remaining }}</li>
       <li>Pending Requests:  {{ event.pending_requests.length }}</li>
       <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
       <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
     </ul>
     <hr>
   </div>
+
 </div>
 
-<button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button>
+<!-- <button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button> -->
 <button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>

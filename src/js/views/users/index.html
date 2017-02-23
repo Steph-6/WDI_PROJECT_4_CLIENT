@@ -3,19 +3,24 @@
   <a ui-sref="profile({id: main.user.id})" ng-show="main.hasUser">Welcome {{ main.user.name }}</a>
 </li>
 
+<!-- ..................BAR'S PROFILE....................... -->
+
+
 <div ng-if="main.user.is_bar === 'yes'">
   <h4>Bands:</h4>
     <div ng-repeat="user in usersIndex.users | filter: { is_bar: 'no'}">
     <ul>
       <li>
-        <a ui-sref="show({id: user.id})">{{ user.artist_id }}</a>
-      </li>
-      <li>
-        <a>{{ user.band_telephone }}</a>
+        <label>Artist's Name</label>
+        <a ui-sref="show({id: user.id})">{{ user.name }}</a>
+        <label>Contact Number</label>
+        <p>{{ user.band_telephone }}</p>
       </li>
     </ul>
   </div>
 </div>
+
+<!-- ..................BAND'S PROFILE....................... -->
 
 <div ng-if="main.user.is_bar === 'no'">
   <h4>Venues</h4>

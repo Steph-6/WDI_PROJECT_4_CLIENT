@@ -1,1 +1,9 @@
 // Import all of your scss files here
+@import "header";
+@import "variables";
+@import "pages/register";
+@import "pages/login";
+@import "pages/usersIndex";
+@import "pages/usersProfile";
+@import "pages/usersEdit";
+@import "pages/eventsNew";

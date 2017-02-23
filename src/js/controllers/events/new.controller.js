@@ -10,7 +10,7 @@ function EventsNewCtrl(Event, CurrentUserService, $state, $stateParams) {
     Event
       .save(vm.event)
       .$promise
-      .then((data) => {
+      .then(() => {
         $state.go('profile', {id: $stateParams.id});
       });
   };
