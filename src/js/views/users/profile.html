@@ -17,8 +17,16 @@
     <hr>
     <div>
       <ul>
-        <li>Pending Requests:  {{usersProfile.user.my_pending_requests.length }}</li>
-        <li>Accepted Requests: {{usersProfile.user.my_accepted_requests.length }}</li>
+        <li>Pending Requests:
+          {{usersProfile.user.my_pending_requests.length }}
+        </li>
+        <!-- <li ng-repeat="event in usersProfile.user.events">
+          {{ event.name }}
+        </li>
+        <li>Accepted Requests:
+          {{ event.}}</li>
+        <li> -->
+        </li>
         <li>Rejected Requests: {{usersProfile.user.my_rejected_requests.length }}</li>
       </ul>
     </div>
@@ -42,7 +50,7 @@
   <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
 
   <h3>Upcoming Events</h3>
-  <div ng-repeat="event in usersProfile.events | orderBy: '-date_string':true" class="row venue-profile">
+  <div ng-repeat="event in usersProfile.events | orderBy: '-date':true" class="row venue-profile">
     <ul ng-if="event.is_expired === 'no'">
       <!-- {{ event.date }} -->
       <li>
@@ -50,11 +58,14 @@
         <li>Description:     {{ event.description }}</li>
         <li>Slots Remaining: {{ event.slots_remaining }}</li>
       </li>
-        <!-- **********Accepted Requests:  -->
+
+      <li>
+        Accepted Requests: {{ event.accepted_requests.length }}
+      </li>
       <li>
         Rejected Requests: {{ event.rejected_requests.length }}
       </li>
-      <li>Pending Requests from:  </li>
+      <li ng-if="event.pending_requests.length !== 0">Pending Requests from:  </li>
       <ul ng-repeat="pending in event.pending_requests">
         <li>
           <div class="requests">
@@ -70,7 +81,7 @@
       </ul>
 
     </ul>
-    <hr>
+
   </div>
   <!-- {{ event.number_of_pending_requests }} -->
 

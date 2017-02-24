@@ -4,7 +4,8 @@
 
 iframe {
   margin-left: 40px;
-  border-bottom: 40px solid $background-color;
+  margin-bottom: 40px;
+  // border-bottom: 40px solid $background-color;
 }
 
 .spotify-image {
@@ -13,11 +14,15 @@ iframe {
 }
 
 .delete {
-  margin-top: 20px;
+  margin-top: 30px;
+  float: right;
+  margin-bottom: 30px;
 }
 
 .venue-profile {
-  border-right: 40px solid $background-color;
+  border-bottom: 2px solid #cccccc;
+  padding: 10px;
+  margin-left: 40px;
 }
 
 .venue-requests {
