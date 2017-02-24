@@ -1,28 +1,40 @@
-<h1>Show</h1>
-
 <!-- .................BANDS'S SHOW...................... -->
-
 <div ng-if="usersShow.user.is_bar === 'no'">
-  <label>Artist's Name</label>
-  <p>{{ usersShow.user.name }}</p>
-  <label>Contact Number</label>
-  <p>{{ usersShow.user.band_telephone }}</p>
+<h3>{{ usersShow.user.name }}</h3>
+<div class="columns seven band-left">
+  <img class="spotify-image" src="{{ usersShow.spotifyInfo.images[1].url}}" width="200px">
+  <h4>Genres</h4>
+  <ul>
+    <li><p>{{ usersShow.spotifyInfo.genres[0]}}</p></li>
+    <li><p>{{ usersShow.spotifyInfo.genres[1]}}</p></li>
+  </ul>
+  <div class="requests">
+    <ul>
+      <li><h5>Pending Requests:  {{usersShow.user.my_pending_requests.length }}</h5></li>
+      <li><h5>Accepted Requests: {{usersShow.user.my_accepted_requests.length }}</h5></li>
+      <li><h5>Rejected Requests: {{usersShow.user.my_rejected_requests.length }}</h5></li>
+    </ul>
+  </div>
 </div>
 
+<iframe class="columns four right-side" id="spotifyWidget" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
+
+<hr>
+</div>
+
+<!-- <li>Upcoming Events: {{ usersShow. events.number_of_pending_requests }}</li>
+<li ng-repeat="event in usersShow.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
+<li>Past Events: {{ events.my_pending_requests.length }}</li> -->
+<!--
+<div class="columns four right-side">
+  <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+</div> -->
 <!-- <div>
   <label>Past Events</label>
   <ul>
     <li>{{ usersShow.user}}</li>
   </ul>
-
-{{ UsersShow.getSpotify }} -->
-
-
- <!-- <div ng-if="usersShow.user.is_bar === 'no'">
-  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
-</div> -->
-
-  <!-- pending requests: -->
+  pending requests: -->
   <!-- date of the event, artist requesting with link and accpet or reject button  -->
 
 
@@ -40,8 +52,7 @@
       <li>Web Link: <a href="{{ usersShow.user.website }}">{{ usersShow.user.website }}</a></li>
     </ul>
   </div>
-
-
+  <div ng-if="usersShow.events.user.name === usersShow.user.name">
   <div ng-repeat="event in usersShow.events">
     <div class="columns five right-show">
       <ul ng-if="event.is_expired === 'no'">
@@ -58,6 +69,7 @@
       </ul>
     </div>
   </div>
+</div>
 
   <!-- <div >
     Pending requests:

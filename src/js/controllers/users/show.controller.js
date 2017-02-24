@@ -6,19 +6,38 @@ UsersShowCtrl.$inject = ['CurrentUserService', 'Event', 'User', 'Request', '$sta
 function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $state, $http) {
   const vm = this;
 
-  vm.currentUser = CurrentUserService.currentUser;
+  init();
+  function init() {
+    vm.currentUser = CurrentUserService.currentUser;
+    User
+      .get($stateParams)
+      .$promise
+      .then((data) => {
+        vm.user = data;
+        vm.artist = getSpotify(vm.user);
+        console.log(vm.currentUser, 'current');
+      });
 
-  User
-  .get($stateParams)
-  .$promise
-  .then((data) => {
-    vm.user = data;
-    vm.getSpotify();
-  });
-  Event.query().$promise.then((data)=>{
-    vm.events = data;
-    console.log(vm.events);
-  });
+    Event.query().$promise.then((data)=>{
+      vm.events = data;
+      console.log(vm.events, 'events');
+    });
+  }
+
+  function getSpotify(user){
+    const artist = user.name.toLowerCase().split(' ').join('+');
+    console.log(artist);
+    $http({
+      method: 'GET',
+      url: `https://api.spotify.com/v1/search?q=${artist}&type=artist`
+    }).then((res) => {
+      console.log(res.data.artists.items[0]);
+      vm.uri = res.data.artists.items[0].uri;
+      document.getElementById('spotifyWidget').setAttribute('src', `https://embed.spotify.com/?uri=${vm.uri}`);
+      vm.spotifyInfo = res.data.artists.items[0];
+      return res.data.artists.items[0];
+    });
+  }
 
   vm.delete = function usersDelete() {
     User
@@ -43,6 +62,7 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
   };
 
   vm.sendRequest = function sendRequest(eventId) {
+    init();
     const request = {
       event_id: eventId,
       user_id: CurrentUserService.currentUser.id,

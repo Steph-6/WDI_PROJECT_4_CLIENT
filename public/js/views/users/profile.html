@@ -5,7 +5,10 @@
 
 <div ng-if="usersProfile.user.is_bar === 'no'">
   <div class="columns seven">
-    <img class="spotify-image" src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
+    <div class="left-column">
+      <img class="spotify-image" src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
+    </div>
+
     <label>Genre:</label>
     <ul>
       <li>{{ usersProfile.spotifyInfo.genres[0]}}</li>
@@ -22,6 +25,7 @@
     <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
   </div>
 
+
       <!-- <li>Upcoming Events: {{ usersProfile. events.number_of_pending_requests }}</li>
       <li ng-repeat="event in usersProfile.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
       <li>Past Events: {{ events.my_pending_requests.length }}</li> -->
@@ -35,10 +39,7 @@
 <!-- ..................BAR'S PROFILE....................... -->
 
 <div ng-if="usersProfile.user.is_bar === 'yes'">
-  <hr>
   <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
-  <hr>
-
 
   <h3>Upcoming Events</h3>
   <div ng-repeat="event in usersProfile.events | orderBy: '-date_string':true">
@@ -49,19 +50,20 @@
         <li>Description:     {{ event.description }}</li>
         <li>Slots Remaining: {{ event.slots_remaining }}</li>
       </li>
+        <!-- **********Accepted Requests:  -->
       <li>
-        **********Accepted Requests: <!-- {{ event.name }} -->
-      </li>
-      <li>
-        Rejected Requests: {{ event.rejected_requests.length }} </br>
-        {{  }}
+        Rejected Requests: {{ event.rejected_requests.length }}
       </li>
       <li>Pending Requests from:  </li>
       <ul ng-repeat="pending in event.pending_requests">
         <li>
-          By Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
-          <button type="button" ng-click="usersProfile.acceptRequest(pending)">Accept</button>
-          <button type="button" ng-click="usersProfile.rejectRequest(pending)">Reject</button>
+          <div class="requests">
+            <div ng-if="pending.status === 'pending'">
+              By Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
+              <button type="button" class="accept" ng-click="usersProfile.acceptRequest(pending)">Accept</button>
+              <button type="button" class="reject" ng-click="usersProfile.rejectRequest(pending)">Reject</button>
+            </div>
+          </div>
         </li>
       </ul>
       <hr>
@@ -79,6 +81,9 @@
       <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
     </ul>
   </div>
+  <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
 </div>
+
+
 
 <!-- <button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button> -->

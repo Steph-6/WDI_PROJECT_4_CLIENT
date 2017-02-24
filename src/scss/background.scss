@@ -53,29 +53,27 @@ body a {
 // //   100%  { opacity: 0; }
 // // }
 
-.left {
-  background-color: red;
-  animation-name: slideLeft;
-  animation-iteration-count: once;
-  animation-timing-function: ease-out;
-  animation-duration: 15s;
-}
-
-.right {
-  background-color: red;
-  animation-name: slideRight;
-  animation-iteration-count: once;
-  animation-timing-function: ease-out;
-  animation-duration: 15s;
-}
-
-@keyframes slideleft {
-  0%  { margin-left: 0; }
-  50% { margin-left: 200px }
-  100%  { margin-left: 300px; }
-}
-
-@keyframes slideRight {
-  0%  { margin-right: 0; }
-  100%  { margin-right: 300px; }
-}
+// .left {
+//   animation-name: slideLeft;
+//   animation-iteration-count: once;
+//   animation-timing-function: ease-out;
+//   animation-duration: 15s;
+// }
+//
+// .right {
+//   animation-name: slideRight;
+//   animation-iteration-count: once;
+//   animation-timing-function: ease-out;
+//   animation-duration: 15s;
+// }
+//
+// @keyframes slideleft {
+//   0%  { margin-left: 0; }
+//   50% { margin-left: 200px }
+//   100%  { margin-left: 300px; }
+// }
+//
+// @keyframes slideRight {
+//   0%  { margin-right: 0; }
+//   100%  { margin-right: 300px; }
+// }

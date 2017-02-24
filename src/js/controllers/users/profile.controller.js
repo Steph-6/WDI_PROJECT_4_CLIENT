@@ -2,27 +2,24 @@ angular
   .module('venueApp')
   .controller('UsersProfileCtrl', UsersProfileCtrl);
 
-UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state', 'Request', '$http'];
-function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state, Request, $http) {
+UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state', 'Request', '$http', '$rootScope'];
+function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state, Request, $http, $rootScope) {
   const vm = this;
 
-  User.get({id: $stateParams.id})
-  .$promise
-  .then(data => {
-    vm.user = data;
-    console.log(vm.user, 'user');
-    vm.artist = getSpotify(vm.user);
-  });
-  Event.query().$promise.then((data)=>{
-    vm.events = data;
-  });
-
-  vm.requests = Request.query();
-
-  console.log(vm.requests, 'requests');
-  console.log(vm.user, 'user');
-  console.log(vm.events, 'event');
-
+  init();
+  function init(){
+    User.get({id: $stateParams.id})
+    .$promise
+    .then(data => {
+      vm.user = data;
+      console.log(vm.user, 'user');
+      vm.artist = getSpotify(vm.user);
+    });
+    Event.query().$promise.then((data)=>{
+      vm.events = data;
+    });
+    vm.requests = Request.query();
+  }
 
   function getSpotify(user){
     const artist = user.name.toLowerCase().split(' ').join('+');
@@ -41,7 +38,7 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
 
   vm.acceptRequest = function acceptRequest(request) {
     request.status = 'accepted';
-    console.log('accepting');
+    init();
     Request
       .accept({id: request.id}, request)
       .$promise
@@ -52,6 +49,7 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
 
   vm.rejectRequest = function rejectRequest(request) {
     request.status = 'rejected';
+    init();
     Request
       .reject({id: request.id}, request)
       .$promise
