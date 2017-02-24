@@ -18,10 +18,12 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
         console.log(vm.currentUser, 'current');
       });
 
-    Event.query().$promise.then((data)=>{
-      vm.events = data;
-      console.log(vm.events, 'events');
-    });
+    // Event.query()
+    //   .$promise
+    //   .then((data)=>{
+    //     vm.events = data;
+    //     console.log(vm.events, 'event');
+    //   });
   }
 
   function getSpotify(user){
@@ -35,6 +37,10 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       vm.uri = res.data.artists.items[0].uri;
       document.getElementById('spotifyWidget').setAttribute('src', `https://embed.spotify.com/?uri=${vm.uri}`);
       vm.spotifyInfo = res.data.artists.items[0];
+      const genre1 = res.data.artists.items[0].genres[0]
+      vm.genre1 = genre1.charAt(0).toUpperCase() + genre1.slice(1);
+      const genre2 = res.data.artists.items[0].genres[1]
+      vm.genre2 = genre2.charAt(0).toUpperCase() + genre2.slice(1);
       return res.data.artists.items[0];
     });
   }

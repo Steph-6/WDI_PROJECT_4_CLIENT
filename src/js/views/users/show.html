@@ -5,8 +5,8 @@
   <img class="spotify-image" src="{{ usersShow.spotifyInfo.images[1].url}}" width="200px">
   <h4>Genres</h4>
   <ul>
-    <li><p>{{ usersShow.spotifyInfo.genres[0]}}</p></li>
-    <li><p>{{ usersShow.spotifyInfo.genres[1]}}</p></li>
+    <li><p>{{ usersShow.genre1 }}</p></li>
+    <li><p>{{ usersShow.genre2 }}</p></li>
   </ul>
   <div class="requests">
     <ul>
@@ -52,11 +52,12 @@
       <li>Web Link: <a href="{{ usersShow.user.website }}">{{ usersShow.user.website }}</a></li>
     </ul>
   </div>
-  <div ng-if="usersShow.events.user.name === usersShow.user.name">
-  <div ng-repeat="event in usersShow.events">
+  <!-- <div ng-if="usersShow.events.user.name === usersShow.user.name"> -->
+  <div ng-repeat="event in usersShow.user.events">
     <div class="columns five right-show">
       <ul ng-if="event.is_expired === 'no'">
         <li><h5>{{ event.date_string }}</h5></li>
+        <!-- <li ng-if=""><button ng-if="usersShow.checkRequests(event.id)"   ng-click="usersShow.sendRequest(event.id)">Request  Slot</button></li> -->
         <li ng-if="event.slots_remaining !== 0">
           Slots available: {{ event.slots_remaining }}
         </li>

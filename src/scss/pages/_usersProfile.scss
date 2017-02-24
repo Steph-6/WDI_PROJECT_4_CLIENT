@@ -15,3 +15,14 @@ iframe {
 .delete {
   margin-top: 20px;
 }
+
+.venue-profile {
+  border-right: 40px solid $background-color;
+}
+
+.venue-requests {
+  float:right;
+  border: 10px solid $background-color;
+  margin-left: 20px;
+  margin-top: -20px;
+}

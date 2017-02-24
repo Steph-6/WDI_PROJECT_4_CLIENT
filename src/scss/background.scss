@@ -4,6 +4,7 @@ body {
   padding: 30px;
   color: black;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // border: 3px solid red;
 }
 
 body li {
@@ -21,37 +22,41 @@ body a {
 }
 
 // main {
+//   border: 3px solid black;
+//   min-height: 100%;
+// }
+
+// main {
 //   position: absolute;
-//   width: 100%;
+//
 // }
 //
-// main.ng-leave {
-//   animation: slideRight 10s both linear;
-//   z-index: 9999;
+// body.ng-leave {
+//   // animation: borderIn 1s both linear;
+//   // z-index: 9999;
 // }
 
 // main.ng-enter {
-// 	animation: fadeIn 5s both linear;
+// 	animation: borderOut 2s both linear;
 //   z-index: 8888;
 // }
 
 // main.ng-enter-active {
 //   opacity: 0;
 // }
+//
+// @keyframes borderIn {
+//   0%    { border: 0; }
+//   50% { border: solid black 1px; }
+//   100%  { border: 0; }
 
-// @keyframes fadeIn {
-//   0%    { opacity: 0; }
-//   40%   { opacity: 0.2; }
-//   60%   { opacity: 0.6; }
-//   80%   { opacity: 0.8; }
-//   100%  { opacity: 1; }
-// }
-// // @keyframes fadeOut {
-// //   0%    { opacity: 1; }
-// //   25%   { opacity: 0.8; }
-// //   50%   { opacity: 0.2; }
-// //   100%  { opacity: 0; }
-// // }
+@keyframes borderIn {
+
+  25% { border: solid black 2px; }
+  0% { border: solid black 5px; }
+  75% { border: solid black 2px; }
+  100%  { border: 0; }
+}
 
 // .left {
 //   animation-name: slideLeft;

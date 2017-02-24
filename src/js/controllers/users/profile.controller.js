@@ -2,8 +2,8 @@ angular
   .module('venueApp')
   .controller('UsersProfileCtrl', UsersProfileCtrl);
 
-UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state', 'Request', '$http', '$rootScope'];
-function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state, Request, $http, $rootScope) {
+UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state', 'Request', '$http'];
+function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state, Request, $http) {
   const vm = this;
 
   init();
@@ -32,6 +32,10 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
       vm.uri = res.data.artists.items[0].uri;
       document.getElementById('spotifyWidget').setAttribute('src', `https://embed.spotify.com/?uri=${vm.uri}`);
       vm.spotifyInfo = res.data.artists.items[0];
+      const genre1 = res.data.artists.items[0].genres[0]
+      vm.genre1 = genre1.charAt(0).toUpperCase() + genre1.slice(1);
+      const genre2 = res.data.artists.items[0].genres[1]
+      vm.genre2 = genre2.charAt(0).toUpperCase() + genre2.slice(1);
       return res.data.artists.items[0];
     });
   }

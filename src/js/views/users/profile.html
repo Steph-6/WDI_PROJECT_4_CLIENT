@@ -11,8 +11,8 @@
 
     <label>Genre:</label>
     <ul>
-      <li>{{ usersProfile.spotifyInfo.genres[0]}}</li>
-      <li>{{ usersProfile.spotifyInfo.genres[1]}}</li>
+      <li>{{ usersProfile.genre1}}</li>
+      <li>{{ usersProfile.genre2}}</li>
     </ul>
     <hr>
     <div>
@@ -42,7 +42,7 @@
   <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
 
   <h3>Upcoming Events</h3>
-  <div ng-repeat="event in usersProfile.events | orderBy: '-date_string':true">
+  <div ng-repeat="event in usersProfile.events | orderBy: '-date_string':true" class="row venue-profile">
     <ul ng-if="event.is_expired === 'no'">
       <!-- {{ event.date }} -->
       <li>
@@ -60,14 +60,17 @@
           <div class="requests">
             <div ng-if="pending.status === 'pending'">
               By Artist: <a ui-sref="show({id: pending.user_id })">{{ pending.band_name }}</a>
-              <button type="button" class="accept" ng-click="usersProfile.acceptRequest(pending)">Accept</button>
-              <button type="button" class="reject" ng-click="usersProfile.rejectRequest(pending)">Reject</button>
+              <div class="venue-requests">
+                <button type="button" class="accept" ng-click="usersProfile.acceptRequest(pending)">Accept</button>
+                <button type="button" class="reject" ng-click="usersProfile.rejectRequest(pending)">Reject</button>
+              </div>
             </div>
           </div>
         </li>
       </ul>
-      <hr>
+
     </ul>
+    <hr>
   </div>
   <!-- {{ event.number_of_pending_requests }} -->
 
