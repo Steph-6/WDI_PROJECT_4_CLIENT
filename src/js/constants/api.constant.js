@@ -1,3 +1,3 @@
 angular
   .module('venueApp')
-  .constant('API', `https://localhost:3000`);
+  .constant('API', `http://localhost:3000`);
