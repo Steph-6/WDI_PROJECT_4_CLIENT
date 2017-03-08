@@ -17,20 +17,28 @@
     <hr>
     <div>
       <ul>
-        <li>Pending Requests:
-          {{usersProfile.user.my_pending_requests.length }}
+        <h6>Upcoming Events:</h6>
+
+
+
+
+        <li>
+          Pending Requests:{{usersProfile.user.my_pending_requests.length }}
         </li>
-        <!-- <li ng-repeat="event in usersProfile.user.events">
-          {{ event.name }}
+        <li>
+          Requests Remaining:
         </li>
-        <li>Accepted Requests:
-          {{ event.}}</li>
-        <li> -->
+        <h6>You are currently requesting:</h6>
+        <li ng-repeat="pending in usersProfile.user.my_pending_requests">
+          <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
         </li>
+
         <li>Rejected Requests: {{usersProfile.user.my_rejected_requests.length }}</li>
+
       </ul>
     </div>
     <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
+    <button class="edit" type="button" ui-sref="edit({id: user.id})">Edit My Account</button>
   </div>
 
 
@@ -95,6 +103,7 @@
     </ul>
   </div>
   <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
+  <button class="edit" type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button>
 </div>
 
 

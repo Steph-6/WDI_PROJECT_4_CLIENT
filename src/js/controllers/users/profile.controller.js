@@ -13,12 +13,15 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
     .then(data => {
       vm.user = data;
       console.log(vm.user, 'user');
+      console.log('hello');
       vm.artist = getSpotify(vm.user);
     });
-    Event.query().$promise.then((data)=>{
-      vm.events = data;
-    });
-    vm.requests = Request.query();
+    Event.query()
+      .$promise
+      .then(data =>{
+        vm.events = data;
+        console.log(vm.events,'event');
+      });
   }
 
   function getSpotify(user){

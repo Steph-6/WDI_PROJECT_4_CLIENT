@@ -12,6 +12,7 @@ function UsersEditCtrl(User, CurrentUserService, $state, $stateParams) {
       .update({ id: $stateParams.id }, vm.user)
       .$promise
       .then((data) => {
+        console.log('editing');
         console.log(data);
         $state.go('show');
       });

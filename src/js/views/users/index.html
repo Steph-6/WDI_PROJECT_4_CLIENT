@@ -17,8 +17,10 @@
 
 <!-- ..................BAND'S PROFILE....................... -->
 
+
 <div ng-if="main.user.is_bar === 'no'">
   <h4>Discover Venues</h4>
+  <h6>You have </h6>
   <div class="columns five venue-box" ng-repeat="user in usersIndex.users | filter: { is_bar: 'yes'}" >
     <ul>
       <li>
