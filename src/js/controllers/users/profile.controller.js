@@ -14,6 +14,10 @@ function UsersProfileCtrl(User, $stateParams, $state, $http, Request, Event) {
       vm.user = data;
       console.log(vm.user, 'user');
       vm.artist = getSpotify(vm.user);
+      SC.initialize({
+        client_id: 'NikEKIyuP6ikbZL93LX2iSRWxfPWBu6o'
+      });
+      getSoundCloud(vm.user);
     });
   }
 
@@ -35,7 +39,20 @@ function UsersProfileCtrl(User, $stateParams, $state, $http, Request, Event) {
       return res.data.artists.items[0];
     });
   }
-// ************************************
+
+  function getSoundCloud(user){
+    const artist = user.name.toLowerCase().split(' ').join('');
+    const track_url = `http://soundcloud.com/${artist}`;
+
+    SC.oEmbed(
+      track_url,
+      { auto_play: false })
+      .then(function(oEmbed) {
+        console.log('oEmbed response: ', oEmbed);
+        document.getElementById('soundcloud').innerHTML =   oEmbed.html;
+      });
+  }
+
   vm.deleteRequest = function deleteRequest(request) {
     console.log(request);
     Request
@@ -46,7 +63,7 @@ function UsersProfileCtrl(User, $stateParams, $state, $http, Request, Event) {
         init();
       });
   };
-// ************************************
+
   vm.acceptRequest = function acceptRequest(request) {
     request.status = 'accepted';
     init();

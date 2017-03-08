@@ -14,10 +14,25 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       .then((data) => {
         vm.user = data;
         vm.artist = getSpotify(vm.user);
+        SC.initialize({
+          client_id: 'NikEKIyuP6ikbZL93LX2iSRWxfPWBu6o'
+        });
+        getSoundCloud(vm.user);
         console.log(vm.currentUser, 'current');
         NgMap.getMap().then(function(map) {
           console.log(map.getCenter());
         });
+      });
+  }
+
+  function getSoundCloud(user){
+    const artist = user.name.toLowerCase().split(' ').join('');
+    const track_url = `http://soundcloud.com/${artist}`;
+
+    SC.oEmbed(track_url,{ auto_play: false })
+      .then(function(oEmbed) {
+        console.log('oEmbed response: ', oEmbed);
+        document.getElementById('soundcloud').innerHTML =   oEmbed.html;
       });
   }
 

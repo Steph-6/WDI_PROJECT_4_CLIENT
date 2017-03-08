@@ -3,6 +3,9 @@
 <h3>{{ usersShow.user.name }}</h3>
 <div class="columns seven band-left">
   <img class="spotify-image" src="{{ usersShow.spotifyInfo.images[1].url}}" width="200px">
+  <div id="soundcloud">
+    {{usersShow.soundcloud}}
+  </div>
   <h4>Genres</h4>
   <ul>
     <li><p>{{ usersShow.genre1 }}</p></li>
