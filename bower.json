@@ -21,6 +21,7 @@
     "angular-resource": "^1.5.9",
     "skeleton": "^2.0.4",
     "angular-animate": "^1.6.2",
-    "ngmap": "^1.17.8"
+    "ngmap": "^1.17.8",
+    "ng-map-autocomplete": "^1.0.3"
   }
 }
