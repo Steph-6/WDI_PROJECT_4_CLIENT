@@ -8,7 +8,6 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
 
   init();
   function init() {
-    vm.currentUser = CurrentUserService.currentUser;
     User
       .get($stateParams)
       .$promise

@@ -31,6 +31,7 @@
         <h6>You are waiting to hear back from:</h6>
         <li ng-repeat="pending in usersProfile.user.my_pending_requests">
           <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
+          <button ng-click="usersProfile.deleteRequest({id: pending.id})">X</button>
         </li>
 
         <li class="with-bullet" ng-repeat="rejected in usersProfile.user.my_rejected_requests">

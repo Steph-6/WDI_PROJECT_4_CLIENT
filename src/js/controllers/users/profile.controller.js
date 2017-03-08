@@ -2,8 +2,8 @@ angular
   .module('venueApp')
   .controller('UsersProfileCtrl', UsersProfileCtrl);
 
-UsersProfileCtrl.$inject = ['CurrentUserService', 'Event', 'User', '$stateParams', '$state', 'Request', '$http'];
-function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state, Request, $http) {
+UsersProfileCtrl.$inject = ['User', '$stateParams', '$state', '$http', 'Request', 'Event'];
+function UsersProfileCtrl(User, $stateParams, $state, $http, Request, Event) {
   const vm = this;
 
   init();
@@ -13,15 +13,8 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
     .then(data => {
       vm.user = data;
       console.log(vm.user, 'user');
-      console.log('hello');
       vm.artist = getSpotify(vm.user);
     });
-    Event.query()
-      .$promise
-      .then(data =>{
-        vm.events = data;
-        console.log(vm.events,'event');
-      });
   }
 
   function getSpotify(user){
@@ -42,7 +35,18 @@ function UsersProfileCtrl(CurrentUserService, Event, User, $stateParams, $state,
       return res.data.artists.items[0];
     });
   }
-
+// ************************************
+  vm.deleteRequest = function deleteRequest(request) {
+    console.log(request);
+    Request
+      .delete(request)
+      .$promise
+      .then(() => {
+        console.log('request destroyed');
+        init();
+      });
+  };
+// ************************************
   vm.acceptRequest = function acceptRequest(request) {
     request.status = 'accepted';
     init();
