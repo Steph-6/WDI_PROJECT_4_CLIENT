@@ -2,8 +2,8 @@ angular
 .module('venueApp')
 .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['CurrentUserService', 'Event', 'User', 'Request', '$stateParams', '$state', '$http'];
-function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $state, $http) {
+UsersShowCtrl.$inject = ['CurrentUserService', 'Event', 'User', 'Request', '$stateParams', '$state', '$http', 'NgMap'];
+function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $state, $http, NgMap) {
   const vm = this;
 
   init();
@@ -16,14 +16,10 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
         vm.user = data;
         vm.artist = getSpotify(vm.user);
         console.log(vm.currentUser, 'current');
+        NgMap.getMap().then(function(map) {
+          console.log(map.getCenter());
+        });
       });
-
-    // Event.query()
-    //   .$promise
-    //   .then((data)=>{
-    //     vm.events = data;
-    //     console.log(vm.events, 'event');
-    //   });
   }
 
   function getSpotify(user){
@@ -95,9 +91,6 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
     });
     return check;
   };
-
-  // vm.artist
-  // "https://api.spotify.com/v1/search?q=Daft+Punk&type=artist"
 
   // const googleMap = new google.maps.Map;
 

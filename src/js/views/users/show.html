@@ -53,6 +53,14 @@
     </ul>
   </div>
   <!-- <div ng-if="usersShow.events.user.name === usersShow.user.name"> -->
+
+  <div class="columns five">
+    <ng-map center="{{usersShow.user.lat}},{{usersShow.user.lng}} " zoom="16">
+      <marker position="{{usersShow.user.lat}},{{usersShow.user.lng}}" title="{{usersShow.user.name}}"></marker>
+    </ng-map>
+  </div>
+
+
   <div ng-repeat="event in usersShow.user.events">
     <div class="columns five right-show">
       <ul ng-if="event.is_expired === 'no'">
@@ -76,6 +84,7 @@
   <!-- <div >
     Pending requests:
     date of the event, artist requesting with link and accpet or reject button
-
   </div> -->
+
+
 </div>

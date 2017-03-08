@@ -79,7 +79,6 @@
           </div>
         </li>
       </ul>
-
     </ul>
 
   </div>
@@ -87,7 +86,7 @@
 
   <div ng-repeat="event in usersProfile.user.events">
     <ul ng-if="event.is_expired === 'yes'">
-      <h6>Past Events</h6>
+      <h5>Past Events</h5>
       <li>Date:              {{ event.date }}</li>
       <li>Slots remaining:   {{ event.slots_remaining }}</li>
       <li>Pending Requests:  {{ event.pending_requests.length }}</li>
