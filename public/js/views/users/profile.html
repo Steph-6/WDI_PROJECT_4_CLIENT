@@ -11,40 +11,45 @@
 
     <label>Genre:</label>
     <ul>
-      <li>{{ usersProfile.genre1}}</li>
-      <li>{{ usersProfile.genre2}}</li>
+      <li>{{usersProfile.genre1}}</li>
+      <li>{{usersProfile.genre2}}</li>
     </ul>
     <hr>
     <div>
       <ul>
+        <li>Number of Upcoming Events: {{usersProfile.user.my_accepted_requests.length }}</li>
         <h6>Upcoming Events:</h6>
-
-
-
-
-        <li>
-          Pending Requests:{{usersProfile.user.my_pending_requests.length }}
+        <li ng-repeat="accepted in usersProfile.user.my_accepted_requests">
+          {{accepted.bar_name}}
         </li>
         <li>
-          Requests Remaining:
+          Pending Requests:{{usersProfile.user.my_pending_requests.length}}
         </li>
-        <h6>You are currently requesting:</h6>
+        <li>
+          Requests Remaining:{{5-usersProfile.user.my_pending_requests.length}}
+        </li>
+        <h6>You are waiting to hear back from:</h6>
         <li ng-repeat="pending in usersProfile.user.my_pending_requests">
           <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
         </li>
 
-        <li>Rejected Requests: {{usersProfile.user.my_rejected_requests.length }}</li>
+        <li class="with-bullet" ng-repeat="rejected in usersProfile.user.my_rejected_requests">
+          {{rejected.bar_name}}
+        </li>
+
+        <div ng-if="usersProfile.user.my_rejected_requests.length === '1'">
+          <h6>have declined your requests.</h6>
+        </div>
+
+        <div ng-if="usersProfile.user.my_rejected_requests.length > '0'">
+          <h6>has declined your request.</h6>
+        </div>
 
       </ul>
     </div>
     <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
     <button class="edit" type="button" ui-sref="edit({id: user.id})">Edit My Account</button>
   </div>
-
-
-      <!-- <li>Upcoming Events: {{ usersProfile. events.number_of_pending_requests }}</li>
-      <li ng-repeat="event in usersProfile.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
-      <li>Past Events: {{ events.my_pending_requests.length }}</li> -->
 
   <div class="columns four right-side">
     <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
