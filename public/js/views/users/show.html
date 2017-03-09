@@ -25,21 +25,6 @@
 <hr>
 </div>
 
-<!-- <li>Upcoming Events: {{ usersShow. events.number_of_pending_requests }}</li>
-<li ng-repeat="event in usersShow.pending_requests">Upcoming Events: {{ event.pending_requests.event_id }}</li>
-<li>Past Events: {{ events.my_pending_requests.length }}</li> -->
-<!--
-<div class="columns four right-side">
-  <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-</div> -->
-<!-- <div>
-  <label>Past Events</label>
-  <ul>
-    <li>{{ usersShow.user}}</li>
-  </ul>
-  pending requests: -->
-  <!-- date of the event, artist requesting with link and accpet or reject button  -->
-
 
 <!-- .................BAR'S SHOW...................... -->
 
@@ -55,11 +40,11 @@
       <li>Web Link: <a href="{{ usersShow.user.website }}">{{ usersShow.user.website }}</a></li>
     </ul>
   </div>
-  <!-- <div ng-if="usersShow.events.user.name === usersShow.user.name"> -->
+
 
   <div class="columns five">
-    <ng-map center="{{usersShow.user.lat}},{{usersShow.user.lng}} " zoom="16">
-      <marker position="{{usersShow.user.lat}},{{usersShow.user.lng}}" title="{{usersShow.user.name}}"></marker>
+    <ng-map center="{{usersShow.lat}},{{usersShow.lng}} " zoom="16">
+      <marker position="{{usersShow.lat}},{{usersShow.lng}}" title="{{usersShow.user.name}}"></marker>
     </ng-map>
   </div>
 

@@ -21,21 +21,30 @@
   </div>
 
   <div ng-if="register.user.is_bar === 'yes'" class="">
-  <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_size" placeholder="Size of Venue">
-  </div>
-  <div class=" ">
-    <input class=" " type="text" ng-map-autocomplete ng-model="register.user.bar_location" placeholder="Venue Location">
-  </div>
-  <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_image" placeholder="Image">
-  </div>
-  <div class=" ">
-    <input class=" " type="text" ng-model="register.user.bar_telephone" placeholder="Venue Contact Number">
-  </div>
-  <div class=" ">
-    <input class=" " type="text" ng-model="register.user.website" placeholder="Web URL">
-  </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.bar_size" placeholder="Size of Venue">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.bar_description" placeholder="description">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-map-autocomplete ng-model="register.user.bar_location"  placeholder="Venue Location">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.bar_image" placeholder="Image">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.bar_telephone" placeholder="Venue Contact Number">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.lat" placeholder="lat">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.lng" placeholder="lng">
+    </div>
+    <div class=" ">
+      <input class=" " type="text" ng-model="register.user.website" placeholder="Web URL">
+    </div>
   </div>
 
   <div ng-if="register.user.is_bar === 'no'" class="">

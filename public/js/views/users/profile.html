@@ -8,8 +8,6 @@
 
     <div class="right-column">
       <img class="spotify-image" src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
-      <div id="soundcloud" width="200px">
-      </div>
     </div>
 
     <label>Genre:</label>
@@ -55,9 +53,21 @@
     <button class="edit" type="button" ui-sref="edit({id: user.id})">Edit My Account</button>
   </div>
 
+
   <div class="columns four right-side">
-    <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    <label class="label toggle">
+      <input type="checkbox" class="toggle_input" />
+      <div class="toggle-control">
+        <div >
+          <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <div id="soundcloud" width="200px">
+          </div>
+        </div>
+      </div>
+    </label>
   </div>
+
+
 </div>
 
 

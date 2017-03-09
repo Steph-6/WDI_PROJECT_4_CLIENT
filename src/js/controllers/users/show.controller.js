@@ -13,6 +13,7 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       .$promise
       .then((data) => {
         vm.user = data;
+        getLocation(vm.user);
         vm.artist = getSpotify(vm.user);
         SC.initialize({
           client_id: 'NikEKIyuP6ikbZL93LX2iSRWxfPWBu6o'
@@ -24,6 +25,12 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
         });
       });
   }
+
+  // function getLocation(user) {
+  //   vm.lat = user.lat;
+  //   vm.lng = user.lng;
+  //   const location =
+  // }
 
   function getSoundCloud(user){
     const artist = user.name.toLowerCase().split(' ').join('');
@@ -106,6 +113,5 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
     return check;
   };
 
-  // const googleMap = new google.maps.Map;
 
 }
