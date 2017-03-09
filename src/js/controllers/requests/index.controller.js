@@ -6,5 +6,4 @@ ReqIndexCtrl.$inject = [];
 function ReqIndexCtrl(){
   const vm = this;
   vm.requests = Request.query();
-
 }

@@ -1,18 +1,38 @@
 .left-show {
-  // border-right: solid 2px #cccccc;
+  border-right: solid 4px #cccccc;
   padding: 40px;
-  margin-top: -40px;
+  margin-top: 0px;
+  height: 100%;
 }
 .right-show {
   text-align: right;
-  margin-right: 30px;
-  margin-top: 50px;
+  margin: 30px;
+  border: solid 2px #cccccc;
+  padding: 20px;
+  width: 290px;
+  max-width: 350px;
+  float: right;
 }
 
-.requests{
-  float: left;
-}
 
 .band-left {
   border-right: solid 2px #cccccc;
+}
+
+.max-requests {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  border: solid 2px #cccccc;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.map {
+  margin-top: 60px;
+}
+
+ul > li {
+  font-size: 20px;
+  font-weight: lighter;
 }

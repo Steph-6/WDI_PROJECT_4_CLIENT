@@ -20,14 +20,13 @@
 
 <div ng-if="main.user.is_bar === 'no'">
   <h4>Discover Venues</h4>
-  <!-- <h6>You have {{5-usersIndex.user.num_of_pending_requests}} requests remaining</h6> -->
   <div class="columns five venue-box" ng-repeat="user in usersIndex.users | filter: { is_bar: 'yes'}" >
     <ul>
       <li>
         <h5><a ui-sref="show({id: user.id})">{{ user.name }}</a></h5>
       </li>
       <li>
-        <p>Location: <a>{{ user.bar_location }}</a></p>
+        <p>Location: {{ user.bar_location }}</p>
       </li>
       <li>
         <p>Venue Size: {{ user.bar_size }} people</p>

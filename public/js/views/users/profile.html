@@ -53,13 +53,13 @@
     <button class="edit" type="button" ui-sref="edit({id: user.id})">Edit My Account</button>
   </div>
 
-
-  <div class="columns four right-side">
+  <h4>Toggle between Spotify or Soundcloud tracks<h4>
+  <div class="columns five right-side">
     <label class="label toggle">
       <input type="checkbox" class="toggle_input" />
       <div class="toggle-control">
-        <div >
-          <iframe id="spotifyWidget" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+        <div>
+          <iframe id="spotifyWidget" frameborder="0" allowtransparency="true"></iframe>
           <div id="soundcloud" width="200px">
           </div>
         </div>
@@ -74,14 +74,16 @@
 <!-- ..................BAR'S PROFILE....................... -->
 
 <div ng-if="usersProfile.user.is_bar === 'yes'">
-  <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">Add a Time Slot</button>
+  <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">
+    Add a Time Slot
+  </button>
 
   <h3>Upcoming Events</h3>
-  <div ng-repeat="event in usersProfile.events | orderBy: '-date':true" class="row venue-profile">
+  <div ng-repeat="event in usersProfile.user.events | orderBy: '-date':true" class="row venue-profile">
     <ul ng-if="event.is_expired === 'no'">
-      <!-- {{ event.date }} -->
+
       <li>
-        {{ event.date_string }} you have {{ event.accepted_requests.length }} artist's playing.
+        {{ event.date_string }} you have {{ event.accepted_requests.length }} artist<span ng-if="event.accepted_requests.length !== 1">'s</span> playing.
         <li>Description:     {{ event.description }}</li>
         <li>Slots Remaining: {{ event.slots_remaining }}</li>
       </li>
@@ -107,9 +109,7 @@
         </li>
       </ul>
     </ul>
-
   </div>
-  <!-- {{ event.number_of_pending_requests }} -->
 
   <div ng-repeat="event in usersProfile.user.events">
     <ul ng-if="event.is_expired === 'yes'">

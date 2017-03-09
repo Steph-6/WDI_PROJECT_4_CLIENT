@@ -13,24 +13,26 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       .$promise
       .then((data) => {
         vm.user = data;
-        getLocation(vm.user);
         vm.artist = getSpotify(vm.user);
+
         SC.initialize({
           client_id: 'NikEKIyuP6ikbZL93LX2iSRWxfPWBu6o'
         });
         getSoundCloud(vm.user);
-        console.log(vm.currentUser, 'current');
+
+        getLocation(vm.user);
         NgMap.getMap().then(function(map) {
           console.log(map.getCenter());
         });
+
       });
   }
 
-  // function getLocation(user) {
-  //   vm.lat = user.lat;
-  //   vm.lng = user.lng;
-  //   const location =
-  // }
+  function getLocation(user) {
+    vm.lat = user.lat;
+    vm.lng = user.lng;
+    //geocode location from user.bar_location for lat and lng
+  }
 
   function getSoundCloud(user){
     const artist = user.name.toLowerCase().split(' ').join('');
@@ -39,13 +41,12 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
     SC.oEmbed(track_url,{ auto_play: false })
       .then(function(oEmbed) {
         console.log('oEmbed response: ', oEmbed);
-        document.getElementById('soundcloud').innerHTML =   oEmbed.html;
+        document.getElementById('soundcloud').innerHTML = oEmbed.html;
       });
   }
 
   function getSpotify(user){
     const artist = user.name.toLowerCase().split(' ').join('+');
-    console.log(artist);
     $http({
       method: 'GET',
       url: `https://api.spotify.com/v1/search?q=${artist}&type=artist`
@@ -61,28 +62,6 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       return res.data.artists.items[0];
     });
   }
-
-  vm.delete = function usersDelete() {
-    User
-      .delete($stateParams)
-      .$promise
-      .then(() => {
-        $state.go('users');
-      });
-  };
-
-  vm.getSpotify = function getSpotify(){
-    const artist = vm.user.name.split(' ').join('+');
-    $http({
-      method: 'GET',
-      url: `https://api.spotify.com/v1/search?q=${artist}&type=artist`
-    }).then((res) => {
-      vm.artist = res.data.artists.items[0];
-      console.log(vm.artist);
-    }, (err) => {
-      console.error(err);
-    });
-  };
 
   vm.sendRequest = function sendRequest(eventId) {
     init();
@@ -103,6 +82,8 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       });
   };
 
+  vm.currentUser = CurrentUserService.currentUser;
+
   vm.checkRequests = function checkRequests(eventId) {
     let check = true;
     ['my_accepted_requests', 'my_pending_requests', 'my_rejected_requests'].forEach((requests) => {
@@ -112,6 +93,4 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
     });
     return check;
   };
-
-
 }

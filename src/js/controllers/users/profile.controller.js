@@ -43,23 +43,20 @@ function UsersProfileCtrl(User, $stateParams, $state, $http, Request, Event) {
   function getSoundCloud(user){
     const artist = user.name.toLowerCase().split(' ').join('');
     const track_url = `http://soundcloud.com/${artist}`;
-
     SC.oEmbed(
       track_url,
       { auto_play: false })
       .then(function(oEmbed) {
         console.log('oEmbed response: ', oEmbed);
-        document.getElementById('soundcloud').innerHTML =   oEmbed.html;
+        document.getElementById('soundcloud').innerHTML = oEmbed.html;
       });
   }
 
   vm.deleteRequest = function deleteRequest(request) {
-    console.log(request);
     Request
       .delete(request)
       .$promise
       .then(() => {
-        console.log('request destroyed');
         init();
       });
   };
@@ -70,7 +67,7 @@ function UsersProfileCtrl(User, $stateParams, $state, $http, Request, Event) {
     Request
       .accept({id: request.id}, request)
       .$promise
-      .then((data) => {
+      .then(data => {
         console.log(data);
       });
   };
