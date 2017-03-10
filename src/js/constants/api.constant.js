@@ -1,3 +1,3 @@
 angular
   .module('venueApp')
-  .constant('API', `http://localhost:3000`);
+  .constant('API', `https://api-thingy.herokuapp.com/`);
