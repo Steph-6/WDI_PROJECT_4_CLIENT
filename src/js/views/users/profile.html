@@ -9,17 +9,16 @@
     <div class="right-column">
       <img class="spotify-image" src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
     </div>
-
-    <label>Genre:</label>
-    <ul>
-      <li>{{usersProfile.genre1}}</li>
-      <li>{{usersProfile.genre2}}</li>
-    </ul>
+      <label>Genre:</label>
+      <ul>
+        <li>{{usersProfile.genre1}}</li>
+        <li>{{usersProfile.genre2}}</li>
+      </ul>
     <hr>
-    <div>
+    <div class="left-column">
       <ul>
         <li>Number of Upcoming Events: {{usersProfile.user.my_accepted_requests.length }}</li>
-        <h6>Upcoming Events:</h6>
+        <h6 ng-if="usersProfile.user.my_accepted_requests.length > 0">Upcoming Events:</h6>
         <li ng-repeat="accepted in usersProfile.user.my_accepted_requests">
           {{accepted.bar_name}}
         </li>
@@ -32,7 +31,7 @@
         <h6>You are waiting to hear back from:</h6>
         <li ng-repeat="pending in usersProfile.user.my_pending_requests">
           <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
-          <button ng-click="usersProfile.deleteRequest({id: pending.id})">X</button>
+          <button class="delete-button" ng-click="usersProfile.deleteRequest({id: pending.id})">X</button>
         </li>
 
         <li class="with-bullet" ng-repeat="rejected in usersProfile.user.my_rejected_requests">
@@ -48,12 +47,11 @@
         </div>
 
       </ul>
+          <button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
     </div>
-    <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
-    <button class="edit" type="button" ui-sref="edit({id: user.id})">Edit My Account</button>
   </div>
 
-  <h4>Toggle between Spotify or Soundcloud tracks<h4>
+  <h5>Toggle between Spotify or Soundcloud tracks<h5>
   <div class="columns five right-side">
     <label class="label toggle">
       <input type="checkbox" class="toggle_input" />
@@ -74,26 +72,24 @@
 <!-- ..................BAR'S PROFILE....................... -->
 
 <div ng-if="usersProfile.user.is_bar === 'yes'">
-  <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">
-    Add a Time Slot
-  </button>
+  <div class="row">
+    <button class="right" type="button" ui-sref="new({id: usersProfile.user.id})">
+      Add a Time Slot
+    </button>
+  </div>
 
-  <h3>Upcoming Events</h3>
-  <div ng-repeat="event in usersProfile.user.events | orderBy: '-date':true" class="row venue-profile">
+  <div class="six columns">
+    <h3>Upcoming Events</h3>
+    <div ng-repeat="event in usersProfile.user.events | orderBy: '-date':true" class="row venue-profile">
     <ul ng-if="event.is_expired === 'no'">
-
       <li>
         {{ event.date_string }} you have {{ event.accepted_requests.length }} artist<span ng-if="event.accepted_requests.length !== 1">'s</span> playing.
-        <li>Description:     {{ event.description }}</li>
-        <li>Slots Remaining: {{ event.slots_remaining }}</li>
       </li>
+      <li>Description:       {{ event.description }}</li>
+      <li>Slots Remaining:   {{ event.slots_remaining }}</li>
+      <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
+      <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
 
-      <li>
-        Accepted Requests: {{ event.accepted_requests.length }}
-      </li>
-      <li>
-        Rejected Requests: {{ event.rejected_requests.length }}
-      </li>
       <li ng-if="event.pending_requests.length !== 0">Pending Requests from:  </li>
       <ul ng-repeat="pending in event.pending_requests">
         <li>
@@ -110,21 +106,19 @@
       </ul>
     </ul>
   </div>
-
-  <div ng-repeat="event in usersProfile.user.events">
-    <ul ng-if="event.is_expired === 'yes'">
-      <h5>Past Events</h5>
-      <li>Date:              {{ event.date }}</li>
-      <li>Slots remaining:   {{ event.slots_remaining }}</li>
-      <li>Pending Requests:  {{ event.pending_requests.length }}</li>
-      <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
-      <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
-    </ul>
   </div>
-  <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
-  <button class="edit" type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button>
+  <h4>Past Events</h4>
+  <div class="past-events">
+    <div class="past-event" ng-repeat="event in usersProfile.user.events">
+      <ul ng-if="event.is_expired === 'yes'">
+        <li>                   {{ event.date_string }}</li>
+        <li>Slots remaining:   {{ event.slots_remaining }}</li>
+        <li>Pending Requests:  {{ event.pending_requests.length }}</li>
+        <li>Accepted Requests: {{ event.accepted_requests.length }}</li>
+        <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
+      </ul>
+    </div>
+    <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
+  </div>
+
 </div>
-
-
-
-<!-- <button type="button" ui-sref="edit({id: usersProfile.user.id})">Edit My Account</button> -->

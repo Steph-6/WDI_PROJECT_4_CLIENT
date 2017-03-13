@@ -1,0 +1,30 @@
+.event-form {
+  input {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  textarea {
+    font-size: 13px;
+    border-radius: 0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .event-submit {
+    border-radius: 0px;
+    padding: 6px;
+    width: 90px;
+    height: auto;
+  }
+  label {
+    font-weight: lighter;
+    font-size: 18px;
+  }
+}
+
+.event-new-title {
+  h5 {
+    margin-top: -10px;
+    font-size: 16px;
+  }
+}

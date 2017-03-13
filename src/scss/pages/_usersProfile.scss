@@ -74,12 +74,6 @@ $height: $width/2;
   }
 }
 
-.delete {
-  margin-top: 30px;
-  float: right;
-  margin-bottom: 30px;
-}
-
 .venue-profile {
   padding: 10px;
   margin-left: 40px;
@@ -90,4 +84,26 @@ $height: $width/2;
   border: 10px solid $background-color;
   margin-left: 20px;
   margin-top: -20px;
+}
+
+.past-events {
+  margin-top: 70px;
+}
+
+.past-event {
+  margin-top: 50px;
+}
+
+.delete-button {
+  padding-top: 0;
+  // float: right;
+}
+
+.left-column {
+  float: left;
+}
+
+.right {
+  margin-left: 50px;
+  margin-bottom: 40px;
 }

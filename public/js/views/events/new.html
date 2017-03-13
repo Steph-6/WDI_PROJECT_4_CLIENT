@@ -1,30 +1,16 @@
 <h1>Add an Upcoming Event</h1>
-<div>Each time slot represents one hour</div> <br> <div>Please indicate the starting time</div>
+<div class="event-new-title four columns">
+  <h5>Each time slot represents one hour</h5>
+  <h5>Please indicate the starting time</h5>
+<div/>
 
-<form ng-submit="eventsNew.create()">
+<form class="event-form six columns" ng-submit="eventsNew.create()">
   <label for="Date">Date</label>
   <input  type="datetime-local" name="Date" ng-model="eventsNew.event.date">
   <label for="Number of slots">Number of Slots</label>
   <input  type="number" min="1" max="6" ng-model="eventsNew.event.slots_on_offer" name="Number of slots">
   <label for="Description">Description</label>
-  <textarea name="Description" ng-model="eventsNew.event.description" rows="4" cols="80"></textarea>
+  <textarea name="Description" ng-model="eventsNew.event.description" rows="2" cols="40"></textarea>
   <br>
-  <input type="submit" value="Submit">
+  <input class="event-submit" type="submit" value="Submit">
 </form>
-
-<!-- is active status -->
-
-<!-- <div ng-repeat="request in eventsShow.event.pending_requests" class="">
-  <button type="button" ng-click"eventsShow.acceptRequest(request.id)" name="button"></button>
-  <button type="button" ng-click"eventsShow.rejectRequest(request.id)" name="button"></button>
-</div> -->
-
-
-<!-- t.integer  "user_id"
-t.datetime "date"
-t.integer  "slots_on_offer"
-t.integer  "slots_taken"
-t.boolean  "is_active?"
-t.datetime "created_at",     null: false
-t.datetime "updated_at",     null: false
-t.index ["user_id"], name: "index_events_on_user_id", using: :btree -->

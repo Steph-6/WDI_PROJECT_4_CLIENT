@@ -1,11 +1,13 @@
-#Project 4 - Book a Venue
-##Site still in development
+#Project 4 - VeNew
+#####- still in development
 
 ***
 ###Overview
 For my intial concept I knew I wanted to explore the relationships that can be created with Ruby on Rails - so at least three models. I wanted to create a social network between bars and musicians to make small venues and bars more accessible to unsigined artists.
 
 ![image](http://i.imgur.com/MhFHfsY.png)
+
+
 ***
 ###Intial Concept - MVP
 explain about adding spotify to the profile  
