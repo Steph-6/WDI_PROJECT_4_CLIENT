@@ -4,6 +4,11 @@
 <!-- .................BANDS'S PROFILE...................... -->
 
 <div ng-if="usersProfile.user.is_bar === 'no'">
+  <div ng-if="usersProfile.user.num_of_pending_requests === 5" class="max-requests">
+    <h5>
+      You've reached you're maximum amount of pending requests.
+    </h5>
+  </div>
   <div class="columns seven">
 
     <div class="right-column">
@@ -21,6 +26,7 @@
         <h6 ng-if="usersProfile.user.my_accepted_requests.length > 0">Upcoming Events:</h6>
         <li ng-repeat="accepted in usersProfile.user.my_accepted_requests">
           {{accepted.bar_name}}
+          {{accepted}}
         </li>
         <li>
           Pending Requests:{{usersProfile.user.my_pending_requests.length}}
@@ -28,10 +34,12 @@
         <li>
           Requests Remaining:{{5-usersProfile.user.my_pending_requests.length}}
         </li>
-        <h6>You are waiting to hear back from:</h6>
+        <h5>You are waiting to hear back from:</h5>
         <li ng-repeat="pending in usersProfile.user.my_pending_requests">
-          <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
-          <button class="delete-button" ng-click="usersProfile.deleteRequest({id: pending.id})">X</button>
+          <div class="">
+            <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
+            <button class="delete-request" ng-click="usersProfile.deleteRequest({id: pending.id})">X</button>
+          </div>
         </li>
 
         <li class="with-bullet" ng-repeat="rejected in usersProfile.user.my_rejected_requests">
@@ -45,9 +53,9 @@
         <div ng-if="usersProfile.user.my_rejected_requests.length > '0'">
           <h6>has declined your request.</h6>
         </div>
-
       </ul>
-          <button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
+
+      <button type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
     </div>
   </div>
 

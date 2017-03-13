@@ -30,7 +30,7 @@
 
 <!-- .................BAR'S SHOW...................... -->
 <!-- {{usersShow.currentUser}} -->
-<div ng-if="usersShow.currentUser.num_of_pending_requests > 5" class="max-requests">
+<div ng-if="usersShow.currentUser.num_of_pending_requests === 5" class="max-requests">
   <h5>
     Sorry, You've reached you're maximum amount of pending requests.
     <br/>
@@ -42,12 +42,12 @@
 <div ng-if="usersShow.user.is_bar === 'yes'">
   <div class="columns seven left-show">
     <h2>{{ usersShow.user.name}}</h2>
-    <img ng-src="{{ usersShow.user.bar_image }}" width="100%"/>
+    <img ng-src="{{ usersShow.user.bar_image }}" width="100%" alt="Can't find Image"/>
     <ul>
       <li>Address: {{ usersShow.user.bar_location }}</li>
       <li>Contact Details: {{ usersShow.user.bar_telephone }}</li>
-      <li>Description: <br> {{ usersShow.user.bar_description }}</li>
-      <li>Venue Size: {{ usersShow.user.bar_size }}</li>
+      <li>Description: {{ usersShow.user.bar_description }}</li>
+      <li>Venue Size: {{ usersShow.user.bar_size }} people</li>
       <li>Web Link: <a href="{{ usersShow.user.website }}">{{ usersShow.user.website }}</a></li>
     </ul>
   </div>
@@ -55,6 +55,7 @@
 <!-- ************************* map ***************************************** -->
 
   <div class="columns five map">
+    <h5 ng-if="!usersShow.lat">Can't find Location</h5>
     <ng-map center="{{usersShow.lat}},{{usersShow.lng}} " zoom="16">
       <marker position="{{usersShow.lat}},{{usersShow.lng}}" title="{{usersShow.user.name}}"></marker>
     </ng-map>
