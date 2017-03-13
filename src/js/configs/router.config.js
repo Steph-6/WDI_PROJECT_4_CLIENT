@@ -18,11 +18,17 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
       controller: 'RegisterCtrl',
       controllerAs: 'register'
     })
-    .state('users', {
-      url: '/users',
+    .state('artists', {
+      url: '/artists',
       templateUrl: '/js/views/users/index.html',
       controller: 'UsersIndexCtrl',
       controllerAs: 'usersIndex'
+    })
+    .state('venues', {
+      url: '/venues',
+      templateUrl: '/js/views/venues/index.html',
+      controller: 'VenuesIndexCtrl',
+      controllerAs: 'venuesIndex'
     })
     .state('show', {
       url: '/users/:id',

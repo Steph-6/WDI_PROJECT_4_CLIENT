@@ -2,8 +2,16 @@ angular
   .module('venueApp')
   .controller('LoginCtrl', LoginCtrl);
 
-LoginCtrl.$inject = ['User', 'CurrentUserService'];
-function LoginCtrl(User, CurrentUserService) {
+LoginCtrl.$inject = [
+  'User',
+  'CurrentUserService',
+  '$state'
+];
+function LoginCtrl(
+  User,
+  CurrentUserService,
+  $state
+) {
   const vm = this;
 
   vm.login = () => {
@@ -11,8 +19,11 @@ function LoginCtrl(User, CurrentUserService) {
       .login(vm.user)
       .$promise
       .then(() => {
-        console.log('logging in');
-        CurrentUserService.getUser();
+        CurrentUserService
+        .getUser()
+        .then(user => {
+          $state.go('profile', {id: user.id});
+        });
       }, err => {
         console.log(err);
       });

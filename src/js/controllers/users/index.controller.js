@@ -2,8 +2,14 @@ angular
   .module('venueApp')
   .controller('UsersIndexCtrl', UsersIndexCtrl);
 
-UsersIndexCtrl.$inject = ['User', 'CurrentUserService'];
-function UsersIndexCtrl(User, CurrentUserService){
+UsersIndexCtrl.$inject = ['User'];
+function UsersIndexCtrl(User){
   const vm = this;
-  vm.users = User.query();
+  User
+  .query().$promise
+  .then(users => {
+    vm.users = users.filter(user => {
+      return user.is_bar === 'no';
+    });
+  });
 }

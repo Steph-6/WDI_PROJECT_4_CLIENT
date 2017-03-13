@@ -2,17 +2,28 @@ angular
   .module('venueApp')
   .controller('RegisterCtrl', RegisterCtrl);
 
-RegisterCtrl.$inject = ['User', 'CurrentUserService'];
-function RegisterCtrl(User, CurrentUserService) {
+RegisterCtrl.$inject = [
+  'User',
+  'CurrentUserService',
+  '$state'
+];
+function RegisterCtrl(
+  User,
+  CurrentUserService,
+  $state
+) {
   const vm    = this;
 
   vm.register = () => {
     User
       .register(vm.user)
       .$promise
-      .then((data) => {
-        console.log(data);
-        CurrentUserService.getUser();
+      .then(() => {
+        CurrentUserService
+        .getUser()
+        .then(user => {
+          $state.go('profile', {id: user.id});
+        });
       }, err => {
         console.log(err);
       });

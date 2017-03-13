@@ -16,7 +16,8 @@
       <div class="nav-options columns four">
         <a ui-sref="login" ng-hide="main.hasUser">Login</a>
         <a ui-sref="register" ng-hide="main.hasUser">Register</a>
-        <a id="nav-user" ui-sref="users" ng-show="main.hasUser">Users</a>
+        <a id="nav-user" ui-sref="venues" ng-show="main.hasUser" ng-if="main.user.is_bar === 'no'">Venues</a>
+        <a id="nav-user" ui-sref="artists" ng-show="main.hasUser" ng-if="main.user.is_bar === 'yes'">Artists</a>
         <a ng-click="main.logout()" ng-show="main.hasUser">Logout</a>
         <div ng-show="main.hasUser">
           WELCOME <a ui-sref="profile({id: main.user.id})" ng-show="main.hasUser">{{ main.user.name }}</a>

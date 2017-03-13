@@ -15,9 +15,3 @@ function EventsNewCtrl(Event, CurrentUserService, $state, $stateParams) {
       });
   };
 }
-
-//
-// vm.acceptRequest = function(id){
-//   Request
-//   .accept({id: id})
-// }

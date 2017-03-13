@@ -1,0 +1,17 @@
+<h4>Discover Venues</h4>
+<div class="columns five venue-box" ng-repeat="user in venuesIndex.users" >
+  <ul>
+    <li>
+      <h5><a ui-sref="show({id: user.id})">{{ user.name }}</a></h5>
+    </li>
+    <li>
+      <p>Location: {{ user.bar_location }}</p>
+    </li>
+    <li>
+      <p>Venue Size: {{ user.bar_size }} people</p>
+    </li>
+    <li>
+      Venue Website: <a href="{{ user.website }}">{{ user.website }}</a>
+    </li>
+  </ul>
+</div>

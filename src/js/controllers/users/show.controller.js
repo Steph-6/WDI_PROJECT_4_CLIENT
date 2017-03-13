@@ -21,10 +21,17 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
         getSoundCloud(vm.user);
 
         getLocation(vm.user);
-        NgMap.getMap().then(function(map) {
-          console.log(map.getCenter());
-        });
 
+        if (vm.user.is_bar === 'yes') {
+          NgMap
+          .getMap()
+          .then(map => {
+            console.log(map.getCenter());
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
       });
   }
 
@@ -51,32 +58,35 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       method: 'GET',
       url: `https://api.spotify.com/v1/search?q=${artist}&type=artist`
     }).then((res) => {
-      console.log(res.data.artists.items[0]);
+      if (!res.data.artists.items[0]) return false;
       vm.uri = res.data.artists.items[0].uri;
       document.getElementById('spotifyWidget').setAttribute('src', `https://embed.spotify.com/?uri=${vm.uri}`);
       vm.spotifyInfo = res.data.artists.items[0];
-      const genre1 = res.data.artists.items[0].genres[0]
+      const genre1 = res.data.artists.items[0].genres[0];
       vm.genre1 = genre1.charAt(0).toUpperCase() + genre1.slice(1);
-      const genre2 = res.data.artists.items[0].genres[1]
+      const genre2 = res.data.artists.items[0].genres[1];
       vm.genre2 = genre2.charAt(0).toUpperCase() + genre2.slice(1);
       return res.data.artists.items[0];
     });
   }
 
   vm.sendRequest = function sendRequest(eventId) {
-    init();
     const request = {
       event_id: eventId,
       user_id: CurrentUserService.currentUser.id,
       band_name: CurrentUserService.currentUser.name,
       status: 'pending'
     };
+
     Request
       .save(request)
       .$promise
       .then(() => {
+        init();
         CurrentUserService.getUser();
-        Event.query().$promise.then((data)=>{
+        Event
+        .query()
+        .$promise.then((data)=>{
           vm.events = data;
         });
       });
@@ -84,13 +94,20 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
 
   vm.currentUser = CurrentUserService.currentUser;
 
-  vm.checkRequests = function checkRequests(eventId) {
+  vm.checkRequests = checkRequests;
+
+  function checkRequests(eventId) {
     let check = true;
-    ['my_accepted_requests', 'my_pending_requests', 'my_rejected_requests'].forEach((requests) => {
+    [
+      'my_accepted_requests',
+      'my_pending_requests',
+      'my_rejected_requests'
+    ].forEach((requests) => {
       CurrentUserService.currentUser[requests].forEach((request) => {
-        request.event_id === eventId ? check = false : null;
+        console.log(request)
+        request.event.id === eventId ? check = false : null;
       });
     });
     return check;
-  };
+  }
 }
