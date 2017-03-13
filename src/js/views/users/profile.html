@@ -9,11 +9,11 @@
     <div class="right-column">
       <img class="spotify-image" src="{{ usersProfile.spotifyInfo.images[1].url}}" width="200px">
     </div>
-      <label>Genre:</label>
-      <ul>
-        <li>{{usersProfile.genre1}}</li>
-        <li>{{usersProfile.genre2}}</li>
-      </ul>
+    <label>Genre:</label>
+    <ul>
+      <li>{{usersProfile.genre1}}</li>
+      <li>{{usersProfile.genre2}}</li>
+    </ul>
     <hr>
     <div class="left-column">
       <ul>
@@ -118,7 +118,7 @@
         <li>Rejected Requests: {{ event.rejected_requests.length }}</li>
       </ul>
     </div>
-    <button class="delete" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
+    <button class="delete-button" type="button" ng-click="usersProfile.delete({id: users.id})">Delete My Account</button>
   </div>
 
 </div>

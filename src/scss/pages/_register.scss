@@ -1,0 +1,18 @@
+.register {
+  input {
+    border-radius: 0px;
+    width: 200px;
+  }
+  .submit {
+    width: 120px;
+  }
+  .is-bar-radio {
+    label {
+      font-weight: 200;
+      display: inline-block;
+    }
+    .radio {
+      width: 20px;
+    }
+  }
+}

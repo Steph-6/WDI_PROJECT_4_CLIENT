@@ -14,9 +14,8 @@
   float: right;
 }
 
-
-.band-left {
-  border-right: solid 2px #cccccc;
+.right-side {
+  padding-left: 50px;
 }
 
 .max-requests {
@@ -35,4 +34,11 @@
 ul > li {
   font-size: 20px;
   font-weight: lighter;
+}
+
+.band-left {
+  label {
+    font-weight: 200;
+    font-size: 20px;
+  }
 }

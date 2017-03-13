@@ -1,11 +1,11 @@
-<h1>Login</h1>
+<h2>Login</h2>
 
-<form ng-submit="login.login()">
-  <div class=" ">
-    <input class=" " type="email" name="email" ng-model="login.user.email" placeholder="Email">
+<form class="five columns login" ng-submit="login.login()">
+  <div>
+    <input type="email" name="email" ng-model="login.user.email" placeholder="Email">
   </div>
-  <div class=" ">
-    <input class=" " type="password" name="password" ng-model="login.user.password" placeholder="Password">
+  <div>
+    <input type="password" name="password" ng-model="login.user.password" placeholder="Password">
   </div>
-  <input class=" " type="submit" value="Submit">
+  <input class="submit" type="submit" value="Submit">
 </form>

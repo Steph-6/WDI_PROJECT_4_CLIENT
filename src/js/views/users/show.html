@@ -1,28 +1,30 @@
 <!-- .................BANDS'S SHOW...................... -->
 <div ng-if="usersShow.user.is_bar === 'no'">
 <h3>{{ usersShow.user.name }}</h3>
-<div class="columns seven band-left">
+<div class="columns four band-left">
   <img class="spotify-image" src="{{ usersShow.spotifyInfo.images[1].url}}" width="200px">
-  <div id="soundcloud">
-    {{usersShow.soundcloud}}
-  </div>
-  <h4>Genres</h4>
+  <label>Genres:</label>
   <ul>
-    <li><p>{{ usersShow.genre1 }}</p></li>
-    <li><p>{{ usersShow.genre2 }}</p></li>
+    <li>{{ usersShow.genre1 }}</li>
+    <li>{{ usersShow.genre2 }}</li>
   </ul>
-  <div class="requests">
-    <ul>
-      <!-- <li><h5>Pending Requests:  {{usersShow.user.my_pending_requests.length }}</h5></li> -->
-      <li><h5>Accepted Requests: {{usersShow.user.my_accepted_requests.length }}</h5></li>
-      <li><h5>Rejected Requests: {{usersShow.user.my_rejected_requests.length }}</h5></li>
-    </ul>
-  </div>
+  <hr>
 </div>
 
-<iframe class="columns four right-side" id="spotifyWidget" width="300" height="380" frameborder="3" allowtransparency="true"></iframe>
+<div class="columns six right-side">
+  <h5>Toggle between Spotify or Soundcloud tracks<h5>
+  <label class="label toggle">
+    <input type="checkbox" class="toggle_input" />
+    <div class="toggle-control">
+      <div>
+        <iframe id="spotifyWidget" frameborder="0" allowtransparency="true"></iframe>
+        <div id="soundcloud" width="200px">
+        </div>
+      </div>
+    </div>
+  </label>
+</div>
 
-<hr>
 </div>
 
 
