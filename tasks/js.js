@@ -11,6 +11,7 @@ const uglify           = require('gulp-uglify');
 const rename           = require('gulp-rename');
 const browserSync      = require('browser-sync');
 const config           = require('../package').gulp;
+const replace          = require('gulp-replace');
 
 const fetchVendorJs = () => {
   return gulp.src(bowerFiles(config.selectors.js))
@@ -37,6 +38,7 @@ const buildJs = () => {
     fetchLocalJs()
   )
   .pipe(order([config.vendor.js, config.selectors.js]))
+  .pipe(gulpIf(global.production, replace('http://localhost:3000', process.env.API_URL)))
   .pipe(concat(config.output.js))
   .pipe(sourcemaps.init())
   .pipe(gulpIf(global.production, uglify()))
