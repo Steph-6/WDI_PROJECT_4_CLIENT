@@ -22,14 +22,14 @@
     <hr>
     <div class="left-column">
       <ul>
-        <li>Number of Upcoming Events: {{usersProfile.user.my_accepted_requests.length }}</li>
+        <!-- <li>Number of Upcoming Events: {{usersProfile.user.my_accepted_requests.length }}</li> -->
         <h5 ng-if="usersProfile.user.my_accepted_requests.length > 0">Upcoming Events:</h5>
         <li class="with-bullet" ng-repeat="accepted in usersProfile.user.my_accepted_requests">
           {{accepted.bar_name}}
           {{accepted.event.date_string}}
         </li>
 
-        <hr/>
+        <hr ng-if="usersProfile.user.my_accepted_requests.length > 0"/>
         <li>
           Pending Requests:{{usersProfile.user.my_pending_requests.length}}
         </li>
@@ -74,8 +74,6 @@
       </div>
     </label>
   </div>
-
-
 </div>
 
 
