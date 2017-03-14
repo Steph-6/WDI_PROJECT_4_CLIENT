@@ -23,24 +23,26 @@
     <div class="left-column">
       <ul>
         <li>Number of Upcoming Events: {{usersProfile.user.my_accepted_requests.length }}</li>
-        <h6 ng-if="usersProfile.user.my_accepted_requests.length > 0">Upcoming Events:</h6>
-        <li ng-repeat="accepted in usersProfile.user.my_accepted_requests">
+        <h5 ng-if="usersProfile.user.my_accepted_requests.length > 0">Upcoming Events:</h5>
+        <li class="with-bullet" ng-repeat="accepted in usersProfile.user.my_accepted_requests">
           {{accepted.bar_name}}
           {{accepted.event.date_string}}
         </li>
+
+        <hr/>
         <li>
           Pending Requests:{{usersProfile.user.my_pending_requests.length}}
         </li>
         <li>
           Requests Remaining:{{5-usersProfile.user.my_pending_requests.length}}
         </li>
-        <h5>You are waiting to hear back from:</h5>
-        <li ng-repeat="pending in usersProfile.user.my_pending_requests">
-          <div class="">
+        <h6 ng-if="usersProfile.user.my_pending_requests.length > '0'">You are waiting to hear back from:</h6>
+        <h6 ng-if="usersProfile.user.my_pending_requests.length === '0'">You have no pending requests</h6>
+        <li class="with-bullet" ng-repeat="pending in usersProfile.user.my_pending_requests">
             <a ui-sref="show({id: pending.bar_id})">{{pending.bar_name}}</a>
             <button class="delete-request" ng-click="usersProfile.deleteRequest({id: pending.id})">X</button>
-          </div>
         </li>
+        <hr/>
 
         <li class="with-bullet" ng-repeat="rejected in usersProfile.user.my_rejected_requests">
           {{rejected.bar_name}}
