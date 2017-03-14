@@ -104,7 +104,6 @@ function UsersShowCtrl(CurrentUserService, Event, User, Request, $stateParams, $
       'my_rejected_requests'
     ].forEach((requests) => {
       CurrentUserService.currentUser[requests].forEach((request) => {
-        console.log(request)
         request.event.id === eventId ? check = false : null;
       });
     });

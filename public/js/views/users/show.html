@@ -76,7 +76,7 @@
 
         <li ng-if="event.slots_remaining !== 0 && usersShow.currentUser.num_of_pending_requests <= 5">
           <button ng-if="usersShow.checkRequests(event.id)"   ng-click="usersShow.sendRequest(event.id)">Request  Slot</button>
-          <button ng-if="!usersShow.checkRequests(event.id)"   ng-click="usersShow.sendRequest(event.id)">Slot Requested</button>
+          <button ng-if="!usersShow.checkRequests(event.id)">Slot Requested</button>
         </li>
         <li ng-if="event.slots_remaining === 0">
           <h5>This date has been fully booked.<h5>
