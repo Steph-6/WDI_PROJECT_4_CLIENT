@@ -1,6 +1,14 @@
 # Project 4 - VeNew  
 
-##### - still in development
+##### Login Details  
+
+email: chotto@matte.com  
+password: password
+
+##### Artist Login Details  
+
+email: ed@sheeran.com	
+password: password 	
 
 ***
 
